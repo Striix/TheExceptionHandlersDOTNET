@@ -28,19 +28,19 @@ namespace HoGent_Stages.Models.DAL
             };
             bedrijven.ForEach(s => context.Bedrijf.Add(s));
             context.SaveChanges();
-            //var stages = new List<Stage>
-            //{
-            //    new Stage
-            //    {
-            //        beschrijving = "Telefoons openemen, programmeren",
-            //        functie = "Programmeur",
-            //        gsmNummer = 0472094005,
-            //        mentorNaam = "Astrid De Landsheer",
-            //        semester = 2
-            //    }
-            //};
-            //stages.ForEach(s => context.Stage.Add(s));
-            //context.SaveChanges();
+            var stages = new List<Stage>
+            {
+                new Stage
+                {
+                    beschrijving = "Telefoons openemen, programmeren",
+                    functie = "Programmeur",
+                    gsmNummer = 0472094005,
+                    mentorNaam = "Astrid De Landsheer",
+                    semester = 2
+                }
+            };
+            stages.ForEach(s => context.Stage.Add(s));
+            context.SaveChanges();
         }
     }
 }
