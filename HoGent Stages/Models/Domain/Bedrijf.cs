@@ -8,10 +8,12 @@ namespace HoGent_Stages
 {
     public class Bedrijf
     {
+        #region Constructors
         public Bedrijf()
         {
             throw new System.NotImplementedException();
         }
+        #endregion
 
         public String bedrijfsNaam { get; set; }
 
@@ -32,5 +34,7 @@ namespace HoGent_Stages
         public string bereikbaarheid { get; set; }
 
         public string wachtwoord { get; set; }
+
+        public string contactPersoon { get; set; }
     }
 }

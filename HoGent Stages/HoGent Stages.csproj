@@ -192,6 +192,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BedrijfController.cs" />
+    <Compile Include="Models\DAL\BedrijfRepository.cs" />
+    <Compile Include="Models\Domain\IBedrijfRepository.cs" />
     <Compile Include="Models\Domain\Bedrijf.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
