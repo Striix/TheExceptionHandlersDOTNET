@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using HoGent_Stages.Models.Domain;
+using Hogent_Stages.Repository.Stages;
+using Hogent_Stages.Repository.Stages.DBContext;
 
 namespace HoGent_Stages.Models.DAL
 {
@@ -17,6 +19,11 @@ namespace HoGent_Stages.Models.DAL
         {
             this.context = context;
             bedrijven = context.Bedrijf;
+        }
+
+        public IEnumerable<Bedrijf> GetAll()
+        {
+            return bedrijven.AsEnumerable();
         }
 
         public void Add(Bedrijf bedrijf)

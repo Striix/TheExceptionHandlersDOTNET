@@ -194,7 +194,6 @@
     <Compile Include="Controllers\BedrijfController.cs" />
     <Compile Include="Models\DAL\BedrijfRepository.cs" />
     <Compile Include="Models\Domain\IBedrijfRepository.cs" />
-    <Compile Include="Models\Domain\Bedrijf.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -202,12 +201,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\DAL\Mapping\BedrijfMap.cs" />
-    <Compile Include="Models\DAL\Mapping\StageMap.cs" />
-    <Compile Include="Models\DAL\stagesContext.cs" />
-    <Compile Include="Models\DAL\stagesInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\Domain\Stage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -324,12 +318,19 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Bedrijf\Create.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hogent Stages.Repository\Hogent Stages.Repository.csproj">
+      <Project>{5ffe934a-51f1-4fb2-a008-c743b10c4471}</Project>
+      <Name>Hogent Stages.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

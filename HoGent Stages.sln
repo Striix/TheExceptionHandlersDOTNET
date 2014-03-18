@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoGent Stages", "HoGent Sta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoGent Stages.Tests", "HoGent Stages.Tests\HoGent Stages.Tests.csproj", "{A2F70DCA-0C98-4E65-9431-BE900BE56027}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hogent Stages.Repository", "Hogent Stages.Repository\Hogent Stages.Repository.csproj", "{5FFE934A-51F1-4FB2-A008-C743B10C4471}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A2F70DCA-0C98-4E65-9431-BE900BE56027}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2F70DCA-0C98-4E65-9431-BE900BE56027}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2F70DCA-0C98-4E65-9431-BE900BE56027}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FFE934A-51F1-4FB2-A008-C743B10C4471}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FFE934A-51F1-4FB2-A008-C743B10C4471}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FFE934A-51F1-4FB2-A008-C743B10C4471}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FFE934A-51F1-4FB2-A008-C743B10C4471}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

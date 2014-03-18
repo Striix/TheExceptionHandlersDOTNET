@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Hogent_Stages.Repository.Stages;
 
 namespace HoGent_Stages.Models.Domain
 {
@@ -12,5 +13,6 @@ namespace HoGent_Stages.Models.Domain
         void Add(Bedrijf bedrijf);
         void Delete(Bedrijf bedrijf);
         void SaveChanges();
+        IEnumerable<Bedrijf> GetAll();
     }
 }

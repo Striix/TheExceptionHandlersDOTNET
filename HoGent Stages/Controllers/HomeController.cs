@@ -22,6 +22,13 @@ namespace HoGent_Stages.Controllers
             return View();
         }
 
+        public ActionResult Details()
+        {
+            ViewBag.Message = "Your app description page.";
+
+            return View();
+        }
+
         
 
         

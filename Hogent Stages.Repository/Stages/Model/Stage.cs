@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Web;
-using System.Web.Services;
-using System.Web.Services.Protocols;
 using System.ComponentModel;
 
-namespace HoGent_Stages
+namespace Hogent_Stages.Repository.Stages
 {
     public class Stage
     {
