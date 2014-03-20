@@ -1,18 +1,22 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>@ViewBag.Title - HoGent Stages Console</title>
-        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <meta name="viewport" content="width=device-width" />
-        @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
-    </head>
-    <body>
-        <header>
-            <div class="content-wrapper">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - HoGent Stages Console</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <header></header>
+    <div id="body">
+        <div class="content-wrapper">
+            <div class="banner">
                 <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("HoGent Stages Console", "Index", "Home")</p>
+                    <hgroup class="title">
+                        <h2>@ViewBag.Message</h2>
+                    </hgroup>
                 </div>
                 <div class="float-right">
                     <section id="login">
@@ -22,29 +26,28 @@
                         <ul id="menu">
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
                             <li>@Html.ActionLink("About", "About", "Home")</li>
-                            
+
                             <li>@Html.ActionLink("Create", "Create", "Bedrijf")</li>
                             <li>@Html.ActionLink("Details", "Details", "Bedrijf")</li>
                         </ul>
                     </nav>
                 </div>
             </div>
-        </header>
-        <div id="body">
-            @RenderSection("featured", required: false)
-            <section class="content-wrapper main-content clear-fix">
-                @RenderBody()
-            </section>
         </div>
-        <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - HoGent Stages Console</p>
-                </div>
+        @RenderSection("featured", required: false)
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+        </section>
+    </div>
+    <footer>
+        <div class="content-wrapper">
+            <div class="hogent">
+                <img src="../Images/hogent_logo.png" />
+                <div />
+                <p>&copy; @DateTime.Now.Year - HoGent Stages Console</p>
             </div>
-        </footer>
-
-        @Scripts.Render("~/bundles/jquery")
-        @RenderSection("scripts", required: false)
-    </body>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
 </html>

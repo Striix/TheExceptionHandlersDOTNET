@@ -1,12 +1,23 @@
-﻿@{
-    ViewBag.Title = "Details";
+﻿    ViewBag.Title = "Details";
 }
 
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                @*                <h1>@ViewBag.Title.</h1>
+                    <h2>@ViewBag.Message</h2>*@
+            </hgroup>
+            <img src="../Images/logokleur_trans.gif" />
+
+        </div>
+    </section>
+}
 <hgroup class="title">
     <h1>@ViewBag.Title.</h1>
     <h2>@ViewBag.Message</h2>
 </hgroup>
-
 <section class="contact">
     <header>
         <h3>Phone</h3>
@@ -20,7 +31,6 @@
         <span>425.555.0199</span>
     </p>
 </section>
-
 <section class="contact">
     <header>
         <h3>Email</h3>
@@ -38,7 +48,6 @@
         <span><a href="mailto:General@example.com">General@example.com</a></span>
     </p>
 </section>
-
 <section class="contact">
     <header>
         <h3>Address</h3>
