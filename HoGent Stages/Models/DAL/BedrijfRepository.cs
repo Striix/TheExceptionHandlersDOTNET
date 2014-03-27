@@ -12,10 +12,10 @@ namespace HoGent_Stages.Models.DAL
 {
     public class BedrijfRepository : IBedrijfRepository
     {
-        private stagesContext context;
+        private StagesContext context;
         private DbSet<Bedrijf> bedrijven;
 
-        public BedrijfRepository(stagesContext context)
+        public BedrijfRepository(StagesContext context)
         {
             this.context = context;
             bedrijven = context.Bedrijf;

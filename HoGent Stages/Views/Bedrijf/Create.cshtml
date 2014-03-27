@@ -1,19 +1,30 @@
 ﻿@model Hogent_Stages.Repository.Stages.Bedrijf
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Aanmaken";
 }
-
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                @*                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>*@
+            </hgroup>
+            <img src="../Images/hogent_logo.png" />
+            
+        </div>
+    </section>
+}
 <script src="~/Scripts/jquery-1.8.2.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 <hgroup class="title">
-    <h2>@ViewBag.Message</h2>
+    <h3>@ViewBag.Message</h3>
 </hgroup>
 
 <article>
     <p>
-        <form action="" method="POST">
+        <form action="Geregistreerd.cshtml" method="POST">
             @* naar homelink sturen ipv example -> nieuwe view maken voor de boodschap dat gelukt is *@ 
             <table cellspacing="2" cellpadding="2" border="0">
                 <tr>
@@ -77,6 +88,7 @@
                     </td>
                     <td>
                         @Html.TextBoxFor(x => x.nummer)
+
                     </td>
                     <td>
                         @Html.ValidationMessageFor(x => x.nummer)
@@ -136,32 +148,20 @@
                     <td>
                         @Html.ValidationMessageFor(x => x.contactPersoon)
                     </td>
-                </tr>
-
- 
-
-                @*<p> Bedrijfsnaam: <input type="text" name="Bedrijfsnaam" maxlength="30" /></p>
-                <p>E-mailadres (eveneens aanmeldingsaccount) <input type="text" name="E-mail" maxlength="30" /></p>
-                <p>Wachtwoord: <input type="text" name="Wachtwoord" maxlength="15" />
-                <br/>
-                <p>Straat: <input type="text" name="Straat" maxlength="30" /> </p>
-                <p>Nummer: <input type="text" name="Straatnummer" maxlength="5" /></p>
-                <p>Postcode: <input type="text" name="Postcode" maxlength="4" /></p>
-                <p>Plaats: <input type="text" name="Plaats" maxlength="30" /></p>
-                <p>Site van het bedrijf: <input type="text" name="URL" maxlength="50" /></p>
-                <p>Telefoonnummer: <input type="text" name="Telefoon" maxlength="10" /></p>
-    
+@*                </tr>
                 <p>
                     Bereikbaarheid van het bedrijf: <br />
                     <input type="checkbox" name="Bereikbaarheid" value="Wagen" /> Wagen
                     <input type="checkbox" name="Bereikbaarheid" value="Openbaar vervoer" /> Openbaar vervoer
                     <input type="checkbox" name="Bereikbaarheid" value="Georganiseerd" /> Georganiseerd
-                </p>
-                <br/>*@
+                </p>*@
+                <br/>
+                <br />
                 <tr>
                     <td>
+                        <br />
                         <button type="submit">
-                            <span>Save</span>
+                            <span>Opslaan</span>
                         </button>
                     </td>
                 </tr>
@@ -172,7 +172,7 @@
     </p>
 </article>
 
-<aside>
+@*<aside>
     <h3>Navigatie</h3>
     <ul>
         <li>@Html.ActionLink("Home", "Index", "Home")</li>
@@ -181,4 +181,4 @@
         <li>@Html.ActionLink("Create", "Create", "Bedrijf")</li>
         <li>@Html.ActionLink("Details", "Details", "Bedrijf")</li>
     </ul>
-</aside>
+</aside>*@

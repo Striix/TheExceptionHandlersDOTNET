@@ -11,7 +11,7 @@ namespace HoGent_Stages.Controllers
 {
     public class BedrijfController : Controller
     {
-       private stagesContext db = new stagesContext();
+       private StagesContext db = new StagesContext();
 
         public ActionResult Create()
         {
@@ -23,6 +23,13 @@ namespace HoGent_Stages.Controllers
         public ActionResult Details()
         {
             ViewBag.Message = "Your details page.";
+
+            return View();
+        }
+
+        public ActionResult Geregistreerd()
+        {
+            ViewBag.Message = "U bent succesvol geregistreerd";
 
             return View();
         }

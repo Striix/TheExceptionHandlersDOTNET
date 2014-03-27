@@ -9,12 +9,12 @@ using MySql.Data.Entity;
 namespace Hogent_Stages.Repository.Stages.DBContext
 {
     [DbConfigurationType(typeof(MySqlEFConfiguration))]
-    public class stagesContext : DbContext
+    public class StagesContext : DbContext
     {
-        public stagesContext()
+        public StagesContext()
         {
 
-            Database.SetInitializer<stagesContext>(new DropCreateDatabaseIfModelChanges<stagesContext>()); 
+            Database.SetInitializer<StagesContext>(new DropCreateDatabaseIfModelChanges<StagesContext>()); 
             Database.Initialize(false);
         }
         public DbSet<Bedrijf> Bedrijf { get; set; }

@@ -1,50 +1,57 @@
-﻿@{
+﻿@model Hogent_Stages.Repository.Stages.Bedrijf
+
+
+@{
     ViewBag.Title = "Details";
+}
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                @*                <h1>@ViewBag.Title.</h1>
+                    <h2>@ViewBag.Message</h2>*@
+            </hgroup>
+            <img src="../Images/logokleur_trans.gif" />
+
+        </div>
+    </section>
 }
 
 <hgroup class="title">
     <h1>@ViewBag.Title.</h1>
     <h2>@ViewBag.Message</h2>
 </hgroup>
-
-<section class="contact">
-    <header>
-        <h3>Phone</h3>
-    </header>
-    <p>
-        <span class="label">Main:</span>
-        <span>425.555.0100</span>
-    </p>
-    <p>
-        <span class="label">After Hours:</span>
-        <span>425.555.0199</span>
-    </p>
-</section>
-
-<section class="contact">
-    <header>
-        <h3>Email</h3>
-    </header>
-    <p>
-        <span class="label">Support:</span>
-        <span><a href="mailto:Support@example.com">Support@example.com</a></span>
-    </p>
-    <p>
-        <span class="label">Marketing:</span>
-        <span><a href="mailto:Marketing@example.com">Marketing@example.com</a></span>
-    </p>
-    <p>
-        <span class="label">General:</span>
-        <span><a href="mailto:General@example.com">General@example.com</a></span>
-    </p>
-</section>
-
-<section class="contact">
-    <header>
-        <h3>Address</h3>
-    </header>
-    <p>
-        One Microsoft Way<br />
-        Redmond, WA 98052-6399
-    </p>
-</section>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(x => x.bedrijfsNaam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(x => x.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(x => x.wachtwoord)
+        </th>
+        <th></th>
+    </tr>
+</table>
+   
+        <table>
+        <tr>
+            <td>
+                @Html.DisplayFor(x => x.bedrijfsNaam)
+            </td>
+            <td>
+                @Html.DisplayFor(x => x.email)
+            </td>
+            <td>
+                @Html.DisplayFor(x => x.wachtwoord)
+            </td>
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>*@
+        </tr>
+    </table>
