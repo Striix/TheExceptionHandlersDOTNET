@@ -1,16 +1,17 @@
-﻿@model Hogent_Stages.Repository.Stages.Model.Bedrijf
+﻿@model Hogent_Stages.Repository.Stages.Bedrijf
+
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Aanmaken";
 }
 @section featured {
     <section class="featured">
         <div class="content-wrapper">
             <hgroup class="title">
                 @*                <h1>@ViewBag.Title.</h1>
-                    <h2>@ViewBag.Message</h2>*@
+                <h2>@ViewBag.Message</h2>*@
             </hgroup>
-            <img src="../Images/logokleur_trans.gif" />
-
+            <img src="../Images/hogent_logo.png" />
+            
         </div>
     </section>
 }
@@ -20,10 +21,11 @@
 <hgroup class="title">
     <h3>@ViewBag.Message</h3>
 </hgroup>
+
 <article>
     <p>
-        <form action="" method="POST">
-            @* naar homelink sturen ipv example -> nieuwe view maken voor de boodschap dat gelukt is *@
+        <form action="Geregistreerd.cshtml" method="POST">
+            @* naar homelink sturen ipv example -> nieuwe view maken voor de boodschap dat gelukt is *@ 
             <table cellspacing="2" cellpadding="2" border="0">
                 <tr>
                     <td>
@@ -86,6 +88,7 @@
                     </td>
                     <td>
                         @Html.TextBoxFor(x => x.nummer)
+
                     </td>
                     <td>
                         @Html.ValidationMessageFor(x => x.nummer)
@@ -145,35 +148,37 @@
                     <td>
                         @Html.ValidationMessageFor(x => x.contactPersoon)
                     </td>
-                    @*                </tr>
-                        <p>
-                            Bereikbaarheid van het bedrijf: <br />
-                            <input type="checkbox" name="Bereikbaarheid" value="Wagen" /> Wagen
-                            <input type="checkbox" name="Bereikbaarheid" value="Openbaar vervoer" /> Openbaar vervoer
-                            <input type="checkbox" name="Bereikbaarheid" value="Georganiseerd" /> Georganiseerd
-                        </p>*@
-                    <br />
-                    <br />
+@*                </tr>
+                <p>
+                    Bereikbaarheid van het bedrijf: <br />
+                    <input type="checkbox" name="Bereikbaarheid" value="Wagen" /> Wagen
+                    <input type="checkbox" name="Bereikbaarheid" value="Openbaar vervoer" /> Openbaar vervoer
+                    <input type="checkbox" name="Bereikbaarheid" value="Georganiseerd" /> Georganiseerd
+                </p>*@
+                <br/>
+                <br />
                 <tr>
                     <td>
                         <br />
                         <button type="submit">
-                            <span>Save</span>
+                            <span>Opslaan</span>
                         </button>
                     </td>
                 </tr>
-
-
+                
+       
             </table>
         </form>
     </p>
 </article>
-<aside>
+
+@*<aside>
     <h3>Navigatie</h3>
     <ul>
         <li>@Html.ActionLink("Home", "Index", "Home")</li>
         <li>@Html.ActionLink("About", "About", "Home")</li>
+
         <li>@Html.ActionLink("Create", "Create", "Bedrijf")</li>
         <li>@Html.ActionLink("Details", "Details", "Bedrijf")</li>
     </ul>
-</aside>
+</aside>*@
