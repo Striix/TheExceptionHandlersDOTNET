@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
+using Hogent_Stages.Repository.Stages.Model;
 using MySql.Data.Entity;
 
 namespace Hogent_Stages.Repository.Stages.DBContext

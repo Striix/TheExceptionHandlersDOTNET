@@ -1,12 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using Hogent_Stages.Repository.Stages.CustomAnnotations;
-using System.Globalization;
-using System.Web;
 
-using System.ComponentModel;
-
-namespace Hogent_Stages.Repository.Stages
+namespace Hogent_Stages.Repository.Stages.Model
 {
     public class Bedrijf
     {

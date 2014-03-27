@@ -1,8 +1,4 @@
-﻿using System;
-using System.Web;
-using System.ComponentModel;
-
-namespace Hogent_Stages.Repository.Stages
+﻿namespace Hogent_Stages.Repository.Stages.Model
 {
     public class Stage
     {
