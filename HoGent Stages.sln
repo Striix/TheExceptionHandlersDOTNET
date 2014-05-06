@@ -3,7 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoGent Stages", "HoGent Stages\HoGent Stages.csproj", "{C26191F2-153A-467C-9C71-3E3839219377}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoGent Stages.Tests", "HoGent Stages.Tests\HoGent Stages.Tests.csproj", "{A2F70DCA-0C98-4E65-9431-BE900BE56027}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hogent Stages.Repository", "Hogent Stages.Repository\Hogent Stages.Repository.csproj", "{5FFE934A-51F1-4FB2-A008-C743B10C4471}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C26191F2-153A-467C-9C71-3E3839219377}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C26191F2-153A-467C-9C71-3E3839219377}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C26191F2-153A-467C-9C71-3E3839219377}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C26191F2-153A-467C-9C71-3E3839219377}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2F70DCA-0C98-4E65-9431-BE900BE56027}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2F70DCA-0C98-4E65-9431-BE900BE56027}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2F70DCA-0C98-4E65-9431-BE900BE56027}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2F70DCA-0C98-4E65-9431-BE900BE56027}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FFE934A-51F1-4FB2-A008-C743B10C4471}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FFE934A-51F1-4FB2-A008-C743B10C4471}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FFE934A-51F1-4FB2-A008-C743B10C4471}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FFE934A-51F1-4FB2-A008-C743B10C4471}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection

@@ -10,16 +10,19 @@ using MySql.Data.Entity;
 namespace Hogent_Stages.Repository.Stages.DBContext
 {
     [DbConfigurationType(typeof(MySqlEFConfiguration))]
-    public class StagesContext : DbContext
+    public class stagesContext : DbContext
     {
-        public StagesContext()
+        public stagesContext()
         {
 
-            Database.SetInitializer<StagesContext>(new DropCreateDatabaseIfModelChanges<StagesContext>()); 
+            Database.SetInitializer<stagesContext>(new DropCreateDatabaseIfModelChanges<stagesContext>()); 
             Database.Initialize(false);
         }
+
         public DbSet<Bedrijf> Bedrijf { get; set; }
-       // public DbSet<Stage> Stage { get; set; }
+        public DbSet<Stage> Stage { get; set; }
+        public DbSet<User> User { get; set; }
+        public DbSet<Student> Student { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

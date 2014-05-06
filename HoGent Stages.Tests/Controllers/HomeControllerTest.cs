@@ -32,7 +32,7 @@ namespace HoGent_Stages.Tests.Controllers
             HomeController controller = new HomeController();
 
             // Act
-            ViewResult result = controller.Over() as ViewResult;
+            ViewResult result = controller.About() as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);
@@ -45,7 +45,7 @@ namespace HoGent_Stages.Tests.Controllers
             HomeController controller = new HomeController();
 
             // Act
-            ViewResult result = controller.Contact() as ViewResult;
+            ViewResult result = controller.Details() as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);

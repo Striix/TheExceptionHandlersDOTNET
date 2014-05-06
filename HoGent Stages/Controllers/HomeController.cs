@@ -15,16 +15,16 @@ namespace HoGent_Stages.Controllers
             return View();
         }
 
-        public ActionResult Over()
+        public ActionResult About()
         {
-            ViewBag.Message = "Alle informatie over deze applicatie";
+            ViewBag.Message = "Your app description page.";
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Details()
         {
-            ViewBag.Message = "Contactpagina";
+            ViewBag.Message = "Your app description page.";
 
             return View();
         }

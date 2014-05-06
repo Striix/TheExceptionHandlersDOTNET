@@ -1,20 +1,16 @@
-﻿@model Hogent_Stages.Repository.Stages.Bedrijf
+﻿@using Hogent_Stages.Repository.Stages
+@model Hogent_Stages.Repository.Stages.Bedrijf
 
 @{
-    ViewBag.Title = "Aanmaken";
+    ViewBag.Title = "Aanmaken Bedrijf";
 }
-@section featured {
-    <section class="featured">
-        <div class="content-wrapper">
-            <hgroup class="title">
-                @*                <h1>@ViewBag.Title.</h1>
-                <h2>@ViewBag.Message</h2>*@
-            </hgroup>
-            <img src="../Images/hogent_logo.png" />
-            
-        </div>
-    </section>
+
+@{
+    var db = Database.Open("stagesContext");
+    var data = db.Query("SELECT * FROM Stage");
 }
+
+
 <script src="~/Scripts/jquery-1.8.2.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
@@ -24,161 +20,167 @@
 
 <article>
     <p>
-        <form action="Geregistreerd.cshtml" method="POST">
-            @* naar homelink sturen ipv example -> nieuwe view maken voor de boodschap dat gelukt is *@ 
-            <table cellspacing="2" cellpadding="2" border="0">
-                <tr>
-                    <td>
-                        @Html.LabelFor(x => x.bedrijfsNaam)
-                    </td>
-                    <td>
-                        @Html.TextBoxFor(x => x.bedrijfsNaam)
-                    </td>
-                    <td>
-                        @Html.ValidationMessageFor(x => x.bedrijfsNaam)
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.LabelFor(x => x.email)
-                    </td>
-                    <td>
-                        @Html.TextBoxFor(x => x.email)
-                    </td>
-                    <td>
-                        @Html.ValidationMessageFor(x => x.email)
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.LabelFor(x => x.wachtwoord)
-                    </td>
-                    <td>
-                        @Html.PasswordFor(x => x.wachtwoord)
-                    </td>
-                    <td>
-                        @Html.ValidationMessageFor(x => x.wachtwoord)
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.LabelFor(x => x.bevestigWachtwoord)
-                    </td>
-                    <td>
-                        @Html.PasswordFor(x => x.bevestigWachtwoord)
-                    </td>
-                    <td>
-                        @Html.ValidationMessageFor(x => x.bevestigWachtwoord)
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.LabelFor(x => x.straat)
-                    </td>
-                    <td>
-                        @Html.TextBoxFor(x => x.straat)
-                    </td>
-                    <td>
-                        @Html.ValidationMessageFor(x => x.straat)
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.LabelFor(x => x.nummer)
-                    </td>
-                    <td>
-                        @Html.TextBoxFor(x => x.nummer)
+    <form action="" method="POST">
+        @* naar homelink sturen ipv example -> nieuwe view maken voor de boodschap dat gelukt is *@ 
+        @{
+            
+              
+            
+        }
+       <table cellspacing="2" cellpadding="2" border="0">
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.bedrijfsNaam)
+                </td>
+                <td>
+                    @Html.TextBoxFor(x => x.bedrijfsNaam)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(x => x.bedrijfsNaam)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.email)
+                </td>
+                <td>
+                    @Html.TextBoxFor(x => x.email)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(x => x.email)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.wachtwoord)
+                </td>
+                <td>
+                    @Html.PasswordFor(x => x.wachtwoord)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(x => x.wachtwoord)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.bevestigWachtwoord)
+                </td>
+                <td>
+                    @Html.PasswordFor(x => x.bevestigWachtwoord)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(x => x.bevestigWachtwoord)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.straat)
+                </td>
+                <td>
+                    @Html.TextBoxFor(x => x.straat)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(x => x.straat)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.nummer)
+                </td>
+                <td>
+                    @Html.TextBoxFor(x => x.nummer)
 
-                    </td>
-                    <td>
-                        @Html.ValidationMessageFor(x => x.nummer)
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.LabelFor(x => x.postcode)
-                    </td>
-                    <td>
-                        @Html.TextBoxFor(x => x.postcode)
-                    </td>
-                    <td>
-                        @Html.ValidationMessageFor(x => x.postcode)
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.LabelFor(x => x.plaats)
-                    </td>
-                    <td>
-                        @Html.TextBoxFor(x => x.plaats)
-                    </td>
-                    <td>
-                        @Html.ValidationMessageFor(x => x.plaats)
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.LabelFor(x => x.telefoon)
-                    </td>
-                    <td>
-                        @Html.TextBoxFor(x => x.telefoon)
-                    </td>
-                    <td>
-                        @Html.ValidationMessageFor(x => x.telefoon)
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.LabelFor(x => x.url)
-                    </td>
-                    <td>
-                        @Html.TextBoxFor(x => x.url)
-                    </td>
-                    <td>
-                        @Html.ValidationMessageFor(x => x.url)
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.LabelFor(x => x.contactPersoon)
-                    </td>
-                    <td>
-                        @Html.TextBoxFor(x => x.contactPersoon)
-                    </td>
-                    <td>
-                        @Html.ValidationMessageFor(x => x.contactPersoon)
-                    </td>
-@*                </tr>
-                <p>
-                    Bereikbaarheid van het bedrijf: <br />
-                    <input type="checkbox" name="Bereikbaarheid" value="Wagen" /> Wagen
-                    <input type="checkbox" name="Bereikbaarheid" value="Openbaar vervoer" /> Openbaar vervoer
-                    <input type="checkbox" name="Bereikbaarheid" value="Georganiseerd" /> Georganiseerd
-                </p>*@
-                <br/>
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(x => x.nummer)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.postcode)
+                </td>
+                <td>
+                    @Html.TextBoxFor(x => x.postcode)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(x => x.postcode)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.plaats)
+                </td>
+                <td>
+                    @Html.TextBoxFor(x => x.plaats)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(x => x.plaats)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.telefoon)
+                </td>
+                <td>
+                    @Html.TextBoxFor(x => x.telefoon)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(x => x.telefoon)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.url)
+                </td>
+                <td>
+                    @Html.TextBoxFor(x => x.url)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(x => x.url)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.contactPersoon)
+                </td>
+                <td>
+                    @Html.TextBoxFor(x => x.contactPersoon)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(x => x.contactPersoon)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.bereikbaarheid)
+                </td>
+                <td>
+                    <select name="Bereikbaarheid">
+                        <option value="Wagen">Wagen</option>
+                        <option value="Openbaar vervoer"> Openbaar vervoer</option>
+                        <option value="Georganiseerd"> Georganiseerd</option>
+                    </select>
+                    @*<input type="radio" name="Bereikbaarheid" value="Wagen" /> Wagen
+                        <input type="radio" name="Bereikbaarheid" value="Openbaar vervoer" /> Openbaar vervoer
+                        <input type="radio" name="Bereikbaarheid" value="Georganiseerd" /> Georganiseerd*@
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(x => x.bereikbaarheid)
+                </td>
+            </tr>
+            <tr>
+            <td>
                 <br />
-                <tr>
-                    <td>
-                        <br />
-                        <button type="submit">
-                            <span>Opslaan</span>
-                        </button>
-                    </td>
-                </tr>
-                
-       
-            </table>
-        </form>
-    </p>
+                <button type="submit">
+                    <span>Opslaan</span>
+                </button>
+            </td>      
+        </table>
+    </form>
+
+
 </article>
 
-@*<aside>
-    <h3>Navigatie</h3>
-    <ul>
-        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-        <li>@Html.ActionLink("About", "About", "Home")</li>
+<aside>
 
-        <li>@Html.ActionLink("Create", "Create", "Bedrijf")</li>
-        <li>@Html.ActionLink("Details", "Details", "Bedrijf")</li>
-    </ul>
-</aside>*@
+</aside>
