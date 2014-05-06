@@ -1,0 +1,50 @@
+﻿@using Hogent_Stages.Repository.Stages
+@model Hogent_Stages.Repository.Stages.Stage
+
+@{
+    ViewBag.Title = "title";
+}
+
+<h2>title</h2>
+        @* naar homelink sturen ipv example -> nieuwe view maken voor de boodschap dat gelukt is *@ 
+       <table cellspacing="2" cellpadding="2" border="0">
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.titel)
+                </td>
+                <td>
+                    @Html.TextBoxFor(x => x.titel)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(x => x.titel)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.omschrijving)
+                </td>
+                <td>
+                    @Html.TextBoxFor(x => x.omschrijving)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(x => x.omschrijving)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.mentorNaam)
+                </td>
+                <td>
+                    @Html.PasswordFor(x => x.mentorNaam)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(x => x.mentorNaam)
+                </td>
+            </tr>
+            <tr>
+            <td>
+                <br />
+                @Html.ActionLink("Delete", "Verwijder", new { id = ViewData["1"]})
+            </td>      
+        </table>
+
