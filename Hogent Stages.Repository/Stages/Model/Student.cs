@@ -45,49 +45,31 @@ namespace Hogent_Stages.Repository.Stages.Model
         [Display(Name = "Gsm-nummer")]
         public int gsm { get; set; }
 
-        public string foto
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public string Foto { get; set; }
+      
+        public Hogent_Stages.Repository.Stages.Stage Stage { get; set; }
 
-        public Hogent_Stages.Repository.Stages.Stage Stage
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        public stage FindStage()
+        public Stage FindStage()
         {
             throw new System.NotImplementedException();
         }
 
-        public student EditData()
+        public Student EditData()
         {
             throw new System.NotImplementedException();
         }
 
-        public stage ShowAllStages()
+        public Stage ShowAllStages()
+        {
+            return FindAll();
+        }
+
+        public Stage ChooseStage()
         {
             throw new System.NotImplementedException();
         }
 
-        public stage ChooseStage()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public stage ChangeChoice()
+        public Stage ChangeChoice()
         {
             throw new System.NotImplementedException();
         }
