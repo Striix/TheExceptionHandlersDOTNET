@@ -1,0 +1,105 @@
+﻿@model Hogent_Stages.Repository.Stages.Stage
+
+@{
+    ViewBag.Title = "Aanmaken Stage";
+    ViewBag.Message = "Maak hier een stage aan";
+}
+<script src="~/Scripts/jquery-1.8.2.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<hgroup class="title">
+</hgroup>
+
+<article>
+        <form action="" method="POST">
+            @* naar homelink sturen ipv example -> nieuwe view maken voor de boodschap dat gelukt is *@ 
+            <table cellspacing="2" cellpadding="2" border="0">
+                <tr>
+                    <td>
+                        @Html.LabelFor(x => x.titel)
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(x => x.titel)
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(x => x.titel)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(x => x.omschrijving)
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(x => x.omschrijving)
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(x => x.omschrijving)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(x => x.aantalStudenten)
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(x => x.aantalStudenten)
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(x => x.aantalStudenten)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(x => x.specialisatie)
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(x => x.specialisatie)
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(x => x.specialisatie)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(x => x.semester)
+                    </td>
+                    <td>
+                        <select name="Semester">
+                            <option value="1">1ste Semester</option>
+                            <option value="2">2de Semester</option>
+                        </select>
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(x => x.semester)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(x => x.mentorNaam)
+                    </td>
+                    <td>
+                        <select name="MentorNaam">
+                            <option value="gauthier_meert@hotmail.com">Gauthier Meert</option>
+                            <option value="mattia_wijns@hotmail.com"> Mattia wijns</option>
+                        </select>
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(x => x.mentorNaam)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <br />
+                        <button type="submit">
+                            <span>Opslaan</span>
+                        </button>
+                    </td>
+                </tr>
+                
+       
+            </table>
+        </form>
+</article>
+
+<aside>
+
+</aside>

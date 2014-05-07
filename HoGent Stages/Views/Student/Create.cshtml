@@ -1,0 +1,60 @@
+﻿@using Hogent_Stages.Repository.Stages
+@model Hogent_Stages.Repository.Stages.Model.User
+
+@{
+    ViewBag.Title = "Voer hier uw HoGent email adres in";
+}
+
+<script src="~/Scripts/jquery-1.8.2.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<h2>Voer hier uw HoGent e-mailadres in</h2>
+
+<form action="" method="POST">
+        @* naar homelink sturen ipv example -> nieuwe view maken voor de boodschap dat gelukt is *@ 
+        @Html.ValidationSummary(true, "Inloggen mislukt, controleer uw ingevoerde gegevens")
+            
+       <table cellspacing="2" cellpadding="2" border="0">
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.email)
+                </td>
+                <td>
+                    @Html.TextBoxFor(x => x.email)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(x => x.email)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.wachtwoord)
+                </td>
+                <td>
+                    @Html.PasswordFor(x => x.wachtwoord)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(x => x.wachtwoord)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.bevestigWachtwoord)
+                </td>
+                <td>
+                    @Html.PasswordFor(x => x.bevestigWachtwoord)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(x => x.bevestigWachtwoord)
+                </td>
+            </tr>
+            <tr>
+            <td>
+                <br />
+                <button type="submit">
+                    <span>Opslaan</span>
+                </button>
+            </td>      
+        </table>
+    </form>
