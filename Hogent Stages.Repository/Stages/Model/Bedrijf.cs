@@ -64,6 +64,78 @@
             [Required(ErrorMessage = "{0} is verplicht")]
             public string contactPersoon { get; set; }
 
+            public string logo
+            {
+                get
+                {
+                    throw new System.NotImplementedException();
+                }
+                set
+                {
+                }
+            }
+
+            public Stage Stage
+            {
+                get
+                {
+                    throw new System.NotImplementedException();
+                }
+                set
+                {
+                }
+            }
+
+            public stage AddStage()
+            {
+                throw new System.NotImplementedException();
+            }
+
+            public stage RemoveStage()
+            {
+                throw new System.NotImplementedException();
+            }
+
+            public stage EditStage()
+            {
+                throw new System.NotImplementedException();
+            }
+
+            public bedrijf EditData()
+            {
+                throw new System.NotImplementedException();
+            }
+
+            public Mentor AddMentor()
+            {
+                throw new System.NotImplementedException();
+            }
+
+            public Mentor EditMentor()
+            {
+                throw new System.NotImplementedException();
+            }
+
+            public Mentor RemoveMentor()
+            {
+                throw new System.NotImplementedException();
+            }
+
+            public stage FindStage()
+            {
+                throw new System.NotImplementedException();
+            }
+
+            public stage ShowHistory()
+            {
+                throw new System.NotImplementedException();
+            }
+
+            public stage ShowCurrentStages()
+            {
+                throw new System.NotImplementedException();
+            }
+
 
 
         }

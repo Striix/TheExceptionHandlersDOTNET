@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Stages\Model\Begeleider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stages\DBContext\stagesContext.cs" />
     <Compile Include="Stages\Model\Bedrijf.cs" />
@@ -68,6 +69,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Stages\Model\Domain.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
