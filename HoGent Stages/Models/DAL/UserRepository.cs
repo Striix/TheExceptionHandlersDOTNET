@@ -4,9 +4,6 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using HoGent_Stages.Models.Domain;
-using Hogent_Stages.Repository.Stages;
-using Hogent_Stages.Repository.Stages.DBContext;
-using Hogent_Stages.Repository.Stages.Model;
 
 namespace HoGent_Stages.Models.DAL
 {

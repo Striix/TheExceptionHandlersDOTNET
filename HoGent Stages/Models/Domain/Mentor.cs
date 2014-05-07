@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Web;
 using System.ComponentModel;
 
-namespace Hogent_Stages.Repository.Stages
+namespace HoGent_Stages.Models.Domain
 {
     public class Mentor
     {

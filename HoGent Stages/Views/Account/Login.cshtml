@@ -3,6 +3,9 @@
 @{
     ViewBag.Title = "Log in";
 }
+<script type="text/javascript">     //Mag weg
+    window.history.forward();
+</script>
 
 <h2>@ViewBag.Title.</h2>
 <div class="row">
@@ -11,7 +14,7 @@
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-                <h4>Use a local account to log in.</h4>
+                <h4>Gebruik uw e-mailadres</h4>
                 <hr />
                 @Html.ValidationSummary(true)
                 <div class="form-group">
@@ -41,9 +44,6 @@
                         <input type="submit" value="Log in" class="btn btn-default" />
                     </div>
                 </div>
-                <p>
-                    @Html.ActionLink("Register", "Register") if you don't have a local account.
-                </p>
             }
         </section>
     </div>

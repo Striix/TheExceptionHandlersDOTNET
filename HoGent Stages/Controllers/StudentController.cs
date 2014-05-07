@@ -5,13 +5,13 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using HoGent_Stages.Models.DAL;
-using Hogent_Stages.Repository.Stages;
-using Hogent_Stages.Repository.Stages.DBContext;
-using Hogent_Stages.Repository.Stages.Model;
+using HoGent_Stages.Models.Domain;
+using Hogent_Stages.Models.Domain;
 using PagedList;
 
 namespace HoGent_Stages.Controllers
 {
+    [Authorize]
     public class StudentController : Controller
     {
         private stagesContext db = new stagesContext();
@@ -22,11 +22,6 @@ namespace HoGent_Stages.Controllers
         }
 
         public ActionResult Create()
-        {
-            return View();
-        }
-
-        public ActionResult Gegevens()
         {
             return View();
         }
@@ -142,6 +137,37 @@ namespace HoGent_Stages.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult Gegevens()
+        {
+            HttpCookie authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
+            FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
+            var user = db.Student.FirstOrDefault(u => u.email == ticket.Name);
+            return View(user);
+        }
+
+        [HttpPost]
+        public ActionResult Gegevens(Student student) //Oude stage verwijderen en nieuwe toevoegen --> automatisch bovenaan lijst
+        {
+            if (ModelState.IsValid)
+            {
+                StudentRepository studentRepository = new StudentRepository(db);
+                var origineel = studentRepository.FindBy(student.Id);
+                origineel.gsm = student.gsm;
+                origineel.nummer = student.nummer;
+                origineel.plaats = student.plaats;
+                origineel.postcode = student.postcode;
+                origineel.straat = student.straat;
+                studentRepository.SaveChanges();
+                return RedirectToAction("Home", "Student"); 
+            }
+            else
+            {
+                return RedirectToAction("about", "home");
+            }
+            
+
+        }
 
     }
 }

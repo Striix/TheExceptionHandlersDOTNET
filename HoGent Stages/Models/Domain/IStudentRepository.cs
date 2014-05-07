@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Hogent_Stages.Repository.Stages;
-using Hogent_Stages.Repository.Stages.Model;
+using Hogent_Stages.Models.Domain;
 
 namespace HoGent_Stages.Models.Domain
 {
@@ -11,8 +10,8 @@ namespace HoGent_Stages.Models.Domain
     {
         Student FindBy(int studentId);
         IQueryable<Student> FindAll();
-        void Add(Student stage);
-        void Delete(Student stage);
+        void Add(Student student);
+        void Delete(Student student);
         void SaveChanges();
         IEnumerable<Student> GetAll();
     }

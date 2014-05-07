@@ -31,15 +31,16 @@ namespace Hogent_Stages.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "E-mailadres")]
+        [EmailAddress(ErrorMessage = "{0} moet een e-mailadres zijn")]
         public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Paswoord")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Onthouden?")]
         public bool RememberMe { get; set; }
     }
 
@@ -50,14 +51,14 @@ namespace Hogent_Stages.Models
         public string UserName { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "Paswoord {0} moet minstens {2} tekens lang zijn.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "paswoord")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Bevestig paswoord")]
+        [Compare("Password", ErrorMessage = "Paswoord en bevestiging komen niet overeen")]
         public string ConfirmPassword { get; set; }
     }
 }

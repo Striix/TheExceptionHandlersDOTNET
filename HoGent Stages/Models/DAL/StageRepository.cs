@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using Hogent_Stages.Models.Domain;
 using HoGent_Stages.Models.Domain;
-using Hogent_Stages.Repository.Stages;
-using Hogent_Stages.Repository.Stages.DBContext;
 
 namespace HoGent_Stages.Models.DAL
 {
@@ -20,7 +19,7 @@ namespace HoGent_Stages.Models.DAL
             stages = context.Stage;
         }
 
-        public IEnumerable<Stage> GetAll()  
+        public IEnumerable<Stage> GetAll()
         {
             return stages.AsEnumerable();
         }

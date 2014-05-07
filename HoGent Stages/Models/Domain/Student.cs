@@ -5,18 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hogent_Stages.Repository.Stages.Model
+namespace Hogent_Stages.Models.Domain
 {
     public class Student
     {
         [Key]
         public int Id { get; set; }
 
-        [Display(Name = "Naam van het bedrijf")]
+        [Display(Name = "Naam van de student")]
         [Required(ErrorMessage = "{0} is verplicht")]
         public String naam { get; set; }
 
-        [Display(Name = "Naam van het bedrijf")]
+        [Display(Name = "Achternaam van de student")]
         [Required(ErrorMessage = "{0} is verplicht")]
         public String voorNaam { get; set; }
 
@@ -44,6 +44,44 @@ namespace Hogent_Stages.Repository.Stages.Model
 
         [Display(Name = "Gsm-nummer")]
         public int gsm { get; set; }
+
+        public string Foto { get; set; }
+
+        public Stage Stage
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+        public Stage FindStage()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Student EditData()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Stage ShowAllStages()
+        {
+            return FindAll();
+        }
+
+        public Stage ChooseStage()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Stage ChangeChoice()
+        {
+            throw new System.NotImplementedException();
+        }
 
     }
 }

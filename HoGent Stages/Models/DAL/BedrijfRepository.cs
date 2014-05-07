@@ -5,8 +5,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using HoGent_Stages.Models.Domain;
-using Hogent_Stages.Repository.Stages;
-using Hogent_Stages.Repository.Stages.DBContext;
 
 namespace HoGent_Stages.Models.DAL
 {
@@ -24,6 +22,22 @@ namespace HoGent_Stages.Models.DAL
         public IEnumerable<Bedrijf> GetAll()
         {
             return bedrijven.AsEnumerable();
+        }
+
+        public bool ControleBedrijf(Bedrijf bedrijf)
+        {
+            var existedUsers = (from c in GetAll()
+                                where c.email == bedrijf.email
+                                select c.bedrijfsNaam).ToList();
+
+            if (existedUsers.Count.Equals(0))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void Add(Bedrijf bedrijf)

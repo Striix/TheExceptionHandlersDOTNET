@@ -8,12 +8,6 @@ using System.Web.Mvc;
 using System.Web.Security;
 using Hogent_Stages.Models;
 using HoGent_Stages.Models.DAL;
-using Hogent_Stages.Repository.Stages.DBContext;
-using Hogent_Stages.Repository.Stages.Model;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.Owin.Security;
-using HoGent_Stages.Models;
 
 
 namespace Hogent_Stages.Controllers
@@ -21,13 +15,25 @@ namespace Hogent_Stages.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private stagesContext db = new stagesContext();
         //
         // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            return View();
+            if (Request.IsAuthenticated)
+            {
+                HttpCookie authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
+                FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
+                var user = db.User.FirstOrDefault(u => u.email == ticket.Name);
+                return RedirectToAction("Home", user.rol); // ur action and controller
+            }
+            else
+            {
+                return View(); 
+            }
+            
         }
 
         public ActionResult Manage()
@@ -42,14 +48,11 @@ namespace Hogent_Stages.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel model)
         {
-
             if (ModelState.IsValid)
             {
                     if (IsValid(model.UserName, model.Password))
                     {
                         FormsAuthentication.SetAuthCookie(model.UserName, false);
-                        using (var db = new stagesContext())
-                        {
                             var user = db.User.FirstOrDefault(u => u.email == model.UserName);
                             switch (user.rol)
                             {
@@ -59,12 +62,12 @@ namespace Hogent_Stages.Controllers
                                     return RedirectToAction("Home", "Student");
                                 case "stageAdministrator":
                                     return RedirectToAction("Home", "Admin");
-                            }
-                        }
+                            }  
                     }
                     else
                     {
-                        return RedirectToAction("About", "Home");
+                        ModelState.AddModelError("", "Ongeldig e-mailadres/paswoord");
+                        return View(model);
                     }
   
                 }
@@ -137,6 +140,11 @@ namespace Hogent_Stages.Controllers
         public ActionResult LogOff()
         {
             FormsAuthentication.SignOut();
+            HttpContext.Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            HttpContext.Response.Cache.SetNoServerCaching();
+            HttpContext.Response.Cache.SetNoStore();
+            Session.Clear();
+            Session.Abandon();
             return RedirectToAction("Index", "Home");
         }
 

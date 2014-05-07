@@ -10,12 +10,12 @@ using System.Web.Mvc;
 using System.Web.Security;
 using System.Web.UI.WebControls;
 using HoGent_Stages.Models.DAL;
-using Hogent_Stages.Repository.Stages;
-using Hogent_Stages.Repository.Stages.DBContext;
-using Hogent_Stages.Repository.Stages.Model;
+using HoGent_Stages.Models.Domain;
+using Hogent_Stages.Models.Domain;
 
 namespace HoGent_Stages.Controllers
 {
+    [Authorize]
     public class BedrijfController : Controller
     {
        private stagesContext db = new stagesContext();
@@ -87,12 +87,9 @@ namespace HoGent_Stages.Controllers
                 BedrijfRepository bedrijfsRepository = new BedrijfRepository(db);   //Controleren of persoon zich al heeft ingeschreven
                 UserRepository userRepository = new UserRepository(db);
 
-                var existedUsers = (from c in bedrijfsRepository.GetAll()
-                                    where c.email == bedrijf.email
-                                    select c.bedrijfsNaam).ToList();
-
-                    if (existedUsers.Count.Equals(0))
-                    {
+                if(bedrijfsRepository.ControleBedrijf(bedrijf))
+                {
+                       
                         var user = new User();
                         user.email = bedrijf.email;
                         user.wachtwoord = bedrijf.wachtwoord;
@@ -104,7 +101,6 @@ namespace HoGent_Stages.Controllers
                         bedrijfsRepository.SaveChanges();
                         FormsAuthentication.SetAuthCookie(user.email, false);
                         return RedirectToAction("Home", "Bedrijf");
-
                     }
                     else
                     {

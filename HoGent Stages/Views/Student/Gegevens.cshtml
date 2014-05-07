@@ -1,0 +1,106 @@
+﻿@model Hogent_Stages.Repository.Stages.Model.Student
+@{
+    ViewBag.Title = "title";
+}
+
+<script src="~/Scripts/jquery-1.8.2.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<hgroup class="title">
+</hgroup>
+
+<article>
+<form action="" method="POST">
+    @* naar homelink sturen ipv example -> nieuwe view maken voor de boodschap dat gelukt is *@ 
+    <table cellspacing="2" cellpadding="2" border="0">
+        <tr>
+            <td>
+                @Html.LabelFor(x => x.naam)
+            </td>
+            <td>
+                @Html.DisplayFor(x => x.naam)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(x => x.voorNaam)
+            </td>
+            <td>
+                @Html.DisplayFor(x => x.voorNaam)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(x => x.email)
+            </td>
+            <td>
+                @Html.DisplayFor(x => x.email)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(x => x.straat)
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.straat)
+            </td>
+            <td>
+                @Html.ValidationMessageFor(x => x.straat)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(x => x.nummer)
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.nummer)
+            </td>
+            <td>
+                @Html.ValidationMessageFor(x => x.nummer)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(x => x.postcode)
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.postcode)
+            </td>
+            <td>
+                @Html.ValidationMessageFor(x => x.postcode)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(x => x.plaats)
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.plaats)
+            </td>
+            <td>
+                @Html.ValidationMessageFor(x => x.plaats)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(x => x.gsm)
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.gsm)
+            </td>
+            <td>
+                @Html.ValidationMessageFor(x => x.gsm)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br />
+                <button type="submit">
+                    <span>Opslaan</span>
+                </button>
+            </td>
+        </tr>
+                
+       
+    </table>
+</form></article>

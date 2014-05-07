@@ -247,13 +247,17 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Models\Domain\Begeleider.cs" />
     <Compile Include="Controllers\BedrijfController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DAL\BedrijfRepository.cs" />
+    <Compile Include="Models\DAL\Mapper\BedrijfMapper.cs" />
     <Compile Include="Models\DAL\StageRepository.cs" />
+    <Compile Include="Models\DAL\stagesContext.cs" />
     <Compile Include="Models\DAL\StudentRepository.cs" />
     <Compile Include="Models\DAL\UserRepository.cs" />
+    <Compile Include="Models\Domain\Bedrijf.cs" />
     <Compile Include="Models\Domain\IBedrijfRepository.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -263,6 +267,10 @@
     <Compile Include="Models\Domain\IStageRepository.cs" />
     <Compile Include="Models\Domain\IStudentRepository.cs" />
     <Compile Include="Models\Domain\IUserRepository.cs" />
+    <Compile Include="Models\Domain\Mentor.cs" />
+    <Compile Include="Models\Domain\Stage.cs" />
+    <Compile Include="Models\Domain\Student.cs" />
+    <Compile Include="Models\Domain\User.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="MySqlConfiguration.cs" />
     <Compile Include="MySqlHistoryContext.cs" />
@@ -340,6 +348,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Models\Domain\domain.cd" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
@@ -417,6 +426,7 @@
     <Content Include="Views\Student\Create.cshtml" />
     <Content Include="Views\Student\Home.cshtml" />
     <Content Include="Views\Student\Overzicht.cshtml" />
+    <Content Include="Views\Student\Gegevens.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -425,12 +435,6 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Hogent Stages.Repository\Hogent Stages.Repository.csproj">
-      <Project>{5ffe934a-51f1-4fb2-a008-c743b10c4471}</Project>
-      <Name>Hogent Stages.Repository</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
