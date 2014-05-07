@@ -49,11 +49,5 @@ namespace HoGent_Stages.Models.DAL
                 context.SaveChanges();
             }
 
-            public void Update(Student student)
-            {
-                students.Attach(student);
-            }
-
-        
     }
 }

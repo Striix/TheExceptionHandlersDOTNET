@@ -72,17 +72,8 @@ namespace HoGent_Stages.Models.Domain
             public virtual ICollection<Stage> stages { get; set; }
             public virtual ICollection<Mentor> mentors { get; set; }
 
-            public Hogent_Stages.Models.Domain.Stage Stage
-            {
-                get
-                {
-                    throw new System.NotImplementedException();
-                }
-                set
-                {
-                }
-            }
-
+            public Hogent_Stages.Models.Domain.Stage Stage { get; set; }
+      
 
 
             public Bedrijf()
@@ -103,10 +94,10 @@ namespace HoGent_Stages.Models.Domain
                 stages.Remove(stages.FirstOrDefault(s => s.Id == stageId));
             }
 
-            public void WijzigStage(Stage stage, int stageId)
+            public void EditStage(Stage stage, int stageId)
             {
-                var wijzig = stages.FirstOrDefault(s => s.Id == stageId);
-                stages.Remove(wijzig);
+                var edit = stages.FirstOrDefault(s => s.Id == stageId);
+                stages.Remove(edit);
                 stages.Add(new Stage());
             }
 

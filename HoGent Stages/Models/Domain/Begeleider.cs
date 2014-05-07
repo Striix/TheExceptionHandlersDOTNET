@@ -7,126 +7,29 @@ namespace Hogent_Stages.Models.Domain
 {
     public class Begeleider
     {
-        public string voornaam
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public string voornaam { get; set; }
+    
+        public string naam { get; set; }
 
-        public string naam
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public string email { get; set; }
 
-        public string email
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public string straat { get; set; }
 
-        public string straat
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public int huisnummer { get; set; }
 
-        public int huisnummer
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public int postcode { get; set; }
 
-        public int postcode
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public string plaats { get; set; }
 
-        public string plaats
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public int telefoon { get; set; }
 
-        public int telefoon
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public int gsm { get; set; }
 
-        public int gsm
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public string wachtwoord { get; set; }
 
-        public string wachtwoord
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public string foto { get; set; }
 
-        public string foto
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public Stage stage { get; set; }
 
         public Stage Stage
         {
@@ -138,6 +41,7 @@ namespace Hogent_Stages.Models.Domain
             {
             }
         }
+
 
 
         public void GivePreference()

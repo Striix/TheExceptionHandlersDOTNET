@@ -3,7 +3,7 @@
   <Class Name="HoGent_Stages.Models.Domain.Bedrijf">
     <Position X="11" Y="2.5" Width="3" />
     <TypeIdentifier>
-      <HashCode>AQACAAEIAAIAAAIkAAASAAAAAICICAAAgAgAAACAAAg=</HashCode>
+      <HashCode>AQACAAAIAEIAAAIkAAASAAAAAICICAAAgAgAAACAAAg=</HashCode>
       <FileName>Models\Domain\Bedrijf.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -13,7 +13,7 @@
   <Class Name="Hogent_Stages.Models.Domain.Begeleider">
     <Position X="14.5" Y="2.5" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>ACAAIAEAAAAAAAAgAAAQAAAAAJQAAAAAgAgBAAAIAkg=</HashCode>
+      <HashCode>ACAAIAEAAAAAAAAgAAAQAAAAAJQACAAAgAgBAAAIAkg=</HashCode>
       <FileName>Models\Domain\Begeleider.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -30,7 +30,7 @@
   <Class Name="Hogent_Stages.Models.Domain.Student">
     <Position X="1.5" Y="2.75" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAogABAQAAAAAIQEAgAAgAgBQIAAAAk=</HashCode>
+      <HashCode>AAACAAAAEAAAAAogABAQAAAAAIQEAgAAgAgBQIAAAAk=</HashCode>
       <FileName>Models\Domain\Student.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>

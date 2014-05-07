@@ -47,32 +47,24 @@ namespace Hogent_Stages.Models.Domain
 
         public string Foto { get; set; }
 
-        public Stage Stage
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
+        public Stage Stage { get; set; }
+   
+   
         public Stage FindStage()
         {
-            throw new System.NotImplementedException();
+            return stages.Find(stagesId);
         }
 
-        public Student EditData()
+        public Student EditData(Student student)
         {
-            throw new System.NotImplementedException();
+           return students.Attach(student);
         }
 
         public Stage ShowAllStages()
         {
-            return FindAll();
+            return stages.AsEnumerable();
         }
-
+        
         public Stage ChooseStage()
         {
             throw new System.NotImplementedException();
