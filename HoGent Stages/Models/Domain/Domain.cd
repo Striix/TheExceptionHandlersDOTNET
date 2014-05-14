@@ -6,9 +6,6 @@
       <HashCode>AQACAAAIAEIAAAIkAAASAAAAAICICAAAgAgAAACAAAg=</HashCode>
       <FileName>Models\Domain\Bedrijf.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Stage" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="Hogent_Stages.Models.Domain.Begeleider">
     <Position X="14.5" Y="2.5" Width="2.5" />
@@ -16,21 +13,21 @@
       <HashCode>ACAAIAEAAAAAAAAgAAAQAAAAAJQACAAAgAgBAAAIAkg=</HashCode>
       <FileName>Models\Domain\Begeleider.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Stage" />
-    </ShowAsAssociation>
   </Class>
-  <Class Name="Hogent_Stages.Models.Domain.Stage">
+  <Class Name="Hogent_Stages.Models.Domain.Stages">
     <Position X="5.25" Y="2.75" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAACAQAAAAAAAAAAAAAAACAAAAAAAAAAIBAAAAQAgCA=</HashCode>
+      <HashCode>AAACAQEAAAAAAAAAAAAAACAAAAAAAAAAIBAAAAQAgCA=</HashCode>
       <FileName>Models\Domain\Stage.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Bedrijf" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Hogent_Stages.Models.Domain.Student">
     <Position X="1.5" Y="2.75" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAEAAAAAogABAQAAAAAIQEAgAAgAgBQIAAAAk=</HashCode>
+      <HashCode>AAACAAAAAAAAAAogABAQAAAAAIQEAgAAgAgBQIAAAAk=</HashCode>
       <FileName>Models\Domain\Student.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>

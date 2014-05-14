@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 namespace Hogent_Stages.Models.Domain
 {
-    public class Stage
+    public class Stages
     {
         [Key]
         public int Id { get; set; }
@@ -37,6 +37,17 @@ namespace Hogent_Stages.Models.Domain
         [Display(Name = "Datum toegevoegd")]
         [Required]
         public DateTime ToegevoegDateTime { get; set; }
+
+        public HoGent_Stages.Models.Domain.Bedrijf Bedrijf
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
 
 
 
