@@ -33,7 +33,7 @@ namespace HoGent_Stages.Models.DAL
                 students.Remove(student);
             }
 
-            public Student FindBy(int studentId)
+            public Student FindBy(string studentId)
             {
                 return students.Find(studentId);
             }
@@ -42,12 +42,28 @@ namespace HoGent_Stages.Models.DAL
             {
                 return students.Include(b => b.email).OrderBy(b => b.email);
             }
+            public IQueryable<Stage> FindAllStudentOpdrachten(ICollection<Stage> lijst)
+            {
+
+                IEnumerable<Student> sublijst = FindAll();//alle studenten
+                for (int i = 0; i < sublijst.Count(); i++)
+                {
+                    for (int j = 0; j < sublijst.ElementAt(i).Stage.Count(); j++)//opdrachtlijst = sublijst.ElementAt(i).Stageopdrachten
+                    {
+
+                        if (!lijst.Contains(sublijst.ElementAt(i).Stage.ElementAt(j)))
+                        {
+                            lijst.Add(sublijst.ElementAt(i).Stage.ElementAt(j));//voegt opdracht op element j van student i aan de lijst toe
+                        }
+                    }
+                }
+                return lijst.AsQueryable();
+            }
 
             public void SaveChanges()
             {
                 context.SaveChanges();
             }
-
            
 
         
