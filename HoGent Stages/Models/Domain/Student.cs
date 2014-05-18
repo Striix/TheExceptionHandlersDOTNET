@@ -1,22 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
+using System.ComponentModel;
+using System.Web.Security;
+using HoGent_Stages.Models.DAL;
+using Ninject.Activation;
 
-namespace Hogent_Stages.Models.Domain
+namespace HoGent_Stages.Models.Domain
 {
     public class Student
     {
         [Key]
         public int Id { get; set; }
 
-        [Display(Name = "Naam van de student")]
+        [Display(Name = "Naam van het bedrijf")]
         [Required(ErrorMessage = "{0} is verplicht")]
         public String naam { get; set; }
 
-        [Display(Name = "Achternaam van de student")]
+        [Display(Name = "Naam van het bedrijf")]
         [Required(ErrorMessage = "{0} is verplicht")]
         public String voorNaam { get; set; }
 
@@ -45,35 +50,43 @@ namespace Hogent_Stages.Models.Domain
         [Display(Name = "Gsm-nummer")]
         public int gsm { get; set; }
 
-        public string Foto { get; set; }
-
-        public Stage Stage { get; set; }
-   
-   
-        public Stage FindStage()
+        public virtual ICollection<Student> studenten { get; set; }
+        public Student ()
         {
-            return stages.Find(stagesId);
+            studenten = new List<Student>();
         }
 
-        public Student EditData(Student student)
+        public void WijzigGegevens(Student student)
         {
-           return students.Attach(student);
+            var wijzig = studenten.FirstOrDefault(s => s.Id == student.Id);
+            wijzig.naam = student.naam;
+            wijzig.voorNaam = student.voorNaam;
+            wijzig.straat = student.straat;
+            wijzig.nummer = student.nummer;
+            wijzig.postcode = student.postcode;
+            wijzig.email = student.email;
+            wijzig.wachtwoord = student.wachtwoord;
+            wijzig.gsm = student.gsm;
+        }
+        public void ZoekStage(Stage stage)
+        {
+
         }
 
-        public Stage ShowAllStages()
+        public void ZoekAlleStages(Stage stage)
         {
-            return stages.AsEnumerable();
-        }
-        
-        public Stage ChooseStage()
-        {
-            throw new System.NotImplementedException();
+            
         }
 
-        public Stage ChangeChoice()
+        public void KiesStage(Stage stage)
         {
-            throw new System.NotImplementedException();
+            
         }
 
+        public void VeranderKeuze(Stage stage)
+        {
+            
+        }
     }
+   
 }

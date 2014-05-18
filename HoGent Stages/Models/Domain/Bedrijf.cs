@@ -6,8 +6,9 @@
     using System.Linq;
     using System.Web;
     using System.ComponentModel;
+    using System.Web.Security;
     using HoGent_Stages.Models.DAL;
-    using Hogent_Stages.Models.Domain;
+    using Ninject.Activation;
 
 namespace HoGent_Stages.Models.Domain
     {
@@ -70,42 +71,46 @@ namespace HoGent_Stages.Models.Domain
             public string contactPersoon { get; set; }
 
             public virtual ICollection<Stage> stages { get; set; }
-            public virtual ICollection<Mentor> mentors { get; set; }
-
-            public Hogent_Stages.Models.Domain.Stage Stage { get; set; }
-      
-
+            public virtual Mentor mentor { get; set; } 
 
             public Bedrijf()
             {
                 stages = new List<Stage>();
             }
 
-            public void AddStage(Stage stage)
+            public Stage VoegStageToe(Stage stage)
             {
-                if (stages.FirstOrDefault(s => s.titel == stage.titel) == null)
-                {
-                    stages.Add(stage);
-                }  
+                if (stages.FirstOrDefault(s => s.titel == stage.titel) != null)
+                    throw new ArgumentException("Er bestaat al een stage met dezelfde titel");
+                stage.ToegevoegDateTime = DateTime.Now;
+                stages.Add(stage);
+                return stage;
             }
 
-            public void RemoveStage(int stageId)
+            public void VerwijderStage(Stage stage)
             {
-                stages.Remove(stages.FirstOrDefault(s => s.Id == stageId));
+                var stageVerwijderen = stages.FirstOrDefault(s => s.Id == stage.Id);
+                if (!stages.Contains(stageVerwijderen))
+                    throw new ArgumentException(string.Format("{0} is geen stage van {1}", stage.titel, this.bedrijfsNaam));
+                stages.Remove(stageVerwijderen);
             }
 
-            public void EditStage(Stage stage, int stageId)
+            public void WijzigStage(Stage stage)
             {
-                var edit = stages.FirstOrDefault(s => s.Id == stageId);
-                stages.Remove(edit);
-                stages.Add(new Stage());
+                var wijzig = stages.FirstOrDefault(s => s.Id == stage.Id);
+                wijzig.titel = stage.titel;
+                wijzig.omschrijving = stage.omschrijving;
+                wijzig.specialisatie = stage.specialisatie;
+                wijzig.semester = stage.semester;
+                wijzig.aantalStudenten = stage.aantalStudenten;
+                wijzig.ToegevoegDateTime = DateTime.Now;
+                wijzig.mentorNaam = stage.mentorNaam;
             }
 
-            public void AddMentor(Mentor mentor)
+            public void VoegMentorToe(Mentor mentor)
             {
                 mentors.Add(mentor);   
             }
-
 
         }
     }

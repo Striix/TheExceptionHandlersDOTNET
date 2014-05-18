@@ -12,8 +12,11 @@ namespace HoGent_Stages.Models.DAL.Mapper
         public BedrijfMapper()
         {
             Property(b => b.bedrijfsNaam).IsRequired().HasMaxLength(100);
-            HasMany(b => b.stages).WithRequired().Map(s => s.MapKey("BedrijfId")).WillCascadeOnDelete(false);
             ToTable("Bedrijf");
+
+            HasMany(b => b.stages).WithRequired().Map(s => s.MapKey("BedrijfId")).WillCascadeOnDelete(false );
+            HasOptional(b => b.mentor).WithRequired().Map(m => m.MapKey("BedrijfId")).WillCascadeOnDelete(false);
+            
         }
 
 

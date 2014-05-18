@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
-using Hogent_Stages.Models.Domain;
 using HoGent_Stages.Models.Domain;
 
 namespace HoGent_Stages.Models.DAL
@@ -41,7 +40,7 @@ namespace HoGent_Stages.Models.DAL
 
         public IQueryable<Stage> FindAll()
         {
-            return stages.Include(b => b.titel).OrderBy(b => b.titel);
+            return stages.Include(b => b).OrderBy(b => b.titel);
         }
 
         public void SaveChanges()

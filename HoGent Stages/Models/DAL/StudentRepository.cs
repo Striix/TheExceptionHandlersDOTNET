@@ -4,14 +4,13 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using HoGent_Stages.Models.Domain;
-using Hogent_Stages.Models.Domain;
 
 namespace HoGent_Stages.Models.DAL
 {
     public class StudentRepository : IStudentRepository
     {
             private stagesContext context;
-            private DbSet<Student> students;
+            public DbSet<Student> students;
 
             public StudentRepository(stagesContext context)
             {
@@ -49,5 +48,8 @@ namespace HoGent_Stages.Models.DAL
                 context.SaveChanges();
             }
 
+           
+
+        
     }
 }

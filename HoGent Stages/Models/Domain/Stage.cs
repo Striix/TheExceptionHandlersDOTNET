@@ -4,18 +4,19 @@ using System.Data;
 using System.Web;
 using System.ComponentModel;
 
-namespace Hogent_Stages.Models.Domain
+namespace HoGent_Stages.Models.Domain
 {
-    public class Stages
+    public class Stage
     {
-        [Key]
+        [Key] 
         public int Id { get; set; }
 
-        [Display(Name = "Titel")]
+        [Display(Name="Titel")]
         [Required(ErrorMessage = "{0} is verplicht")]
         public string titel { get; set; }
 
         [Display(Name = "Omschrijving")]
+        [DataType(DataType.MultilineText)]
         public string omschrijving { get; set; }
 
         [Display(Name = "Specialisatie")]
@@ -34,23 +35,11 @@ namespace Hogent_Stages.Models.Domain
         [Required(ErrorMessage = "{0} is verplicht")]
         public string mentorNaam { get; set; }
 
-        [Display(Name = "Datum toegevoegd")]
+        [Display(Name="Datum toegevoegd")]
         [Required]
         public DateTime ToegevoegDateTime { get; set; }
 
-        public HoGent_Stages.Models.Domain.Bedrijf Bedrijf
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-
-
+        //public virtual Bedrijf Bedrijf { get; set; }
 
     }
 }

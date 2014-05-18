@@ -24,21 +24,6 @@ namespace HoGent_Stages.Models.DAL
             return bedrijven.AsEnumerable();
         }
 
-        public bool ControleBedrijf(Bedrijf bedrijf)
-        {
-            var existedUsers = (from c in GetAll()
-                                where c.email == bedrijf.email
-                                select c.bedrijfsNaam).ToList();
-
-            if (existedUsers.Count.Equals(0))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
 
         public void Add(Bedrijf bedrijf)
         {
@@ -48,6 +33,19 @@ namespace HoGent_Stages.Models.DAL
         public void Delete(Bedrijf bedrijf)
         {
             bedrijven.Remove(bedrijf);
+        }
+
+        public bool ControleBedrijf(Bedrijf bedrijf)
+        {
+            var controle = bedrijven.FirstOrDefault(b => b.email == bedrijf.email);
+            if (controle == null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }       
         }
 
         public Bedrijf FindBy(int bedrijfsId)

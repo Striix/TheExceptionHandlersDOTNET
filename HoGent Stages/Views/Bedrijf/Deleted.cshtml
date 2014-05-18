@@ -1,22 +1,21 @@
-﻿@using Hogent_Stages.Repository.Stages
-@model Hogent_Stages.Repository.Stages.Stage
+﻿@model HoGent_Stages.Models.Domain.Stage
 
 @{
     ViewBag.Title = "title";
 }
 
 <h2>title</h2>
+<article>
+    <form action="" method="POST">
+        @Html.ValidationSummary(true)
         @* naar homelink sturen ipv example -> nieuwe view maken voor de boodschap dat gelukt is *@ 
-       <table cellspacing="2" cellpadding="2" border="0">
+        <table cellspacing="2" cellpadding="2" border="0">
             <tr>
                 <td>
                     @Html.LabelFor(x => x.titel)
                 </td>
                 <td>
-                    @Html.TextBoxFor(x => x.titel)
-                </td>
-                <td>
-                    @Html.ValidationMessageFor(x => x.titel)
+                    @Html.DisplayFor(x => x.titel)
                 </td>
             </tr>
             <tr>
@@ -24,10 +23,39 @@
                     @Html.LabelFor(x => x.omschrijving)
                 </td>
                 <td>
-                    @Html.TextBoxFor(x => x.omschrijving)
+                    @Html.DisplayFor(x => x.omschrijving)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.aantalStudenten)
                 </td>
                 <td>
-                    @Html.ValidationMessageFor(x => x.omschrijving)
+                    @Html.DisplayFor(x => x.aantalStudenten)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.specialisatie)
+                </td>
+                <td>
+                    @Html.DisplayFor(x => x.specialisatie)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.semester)
+                </td>
+                <td>
+                    @Html.DisplayFor(x => x.semester)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(x => x.ToegevoegDateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(x => x.ToegevoegDateTime)
                 </td>
             </tr>
             <tr>
@@ -35,16 +63,17 @@
                     @Html.LabelFor(x => x.mentorNaam)
                 </td>
                 <td>
-                    @Html.PasswordFor(x => x.mentorNaam)
-                </td>
-                <td>
-                    @Html.ValidationMessageFor(x => x.mentorNaam)
+                    @Html.DisplayFor(x => x.mentorNaam)
                 </td>
             </tr>
             <tr>
             <td>
-                <br />
-                @Html.ActionLink("Delete", "Verwijder", new { id = ViewData["1"]})
+              
+                <button type="submit">
+                    <span>Opslaan</span>
+                </button>
             </td>      
         </table>
+    </form>
+    </article>
 

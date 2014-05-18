@@ -6,7 +6,6 @@ using System.Web.Mvc;
 using System.Web.Security;
 using HoGent_Stages.Models.DAL;
 using HoGent_Stages.Models.Domain;
-using Hogent_Stages.Models.Domain;
 using PagedList;
 
 namespace HoGent_Stages.Controllers
@@ -36,64 +35,64 @@ namespace HoGent_Stages.Controllers
             public DateTime Datum { get; set; }
         }
 
-        public ViewResult Overzicht(string sortOrder, string currentFilter, string searchString, int? page)
-        {
-            ViewBag.CurrentSort = sortOrder;
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+        //public ViewResult Overzicht(string sortOrder, string currentFilter, string searchString, int? page)
+        //{
+        //    ViewBag.CurrentSort = sortOrder;
+        //    ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+        //    ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
 
-            if (searchString != null)
-            {
-                page = 1;
-            }
-            else
-            {
-                searchString = currentFilter;
-            }
+        //    if (searchString != null)
+        //    {
+        //        page = 1;
+        //    }
+        //    else
+        //    {
+        //        searchString = currentFilter;
+        //    }
 
-            ViewBag.CurrentFilter = searchString;
+        //    ViewBag.CurrentFilter = searchString;
 
-            var stages = (from s in db.Stage
-                          join b in db.Bedrijf on s.bedrijfId equals b.Id
-                          select new OverzichtViewModel()
-                           {
-                               BedrijfNaam = b.bedrijfsNaam,
-                               Titel = s.titel,
-                               Omschrijving = s.omschrijving,
-                               AantalStudenten = s.aantalStudenten,
-                               Semester = s.semester,
-                               Datum = s.ToegevoegDateTime
-                           });
+        //    var stages = (from s in db.Stage
+        //                  join b in db.Bedrijf on s.bedrijfId equals b.Id
+        //                  select new OverzichtViewModel()
+        //                   {
+        //                       BedrijfNaam = b.bedrijfsNaam,
+        //                       Titel = s.titel,
+        //                       Omschrijving = s.omschrijving,
+        //                       AantalStudenten = s.aantalStudenten,
+        //                       Semester = s.semester,
+        //                       Datum = s.ToegevoegDateTime
+        //                   });
 
 
 
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                stages = stages.Where(s => s.Titel.ToUpper().Contains(searchString.ToUpper())
-                                       || s.Omschrijving.ToUpper().Contains(searchString.ToUpper())
-                                       || s.Semester.ToString() == searchString
-                                       || s.BedrijfNaam.ToUpper().Contains(searchString.ToUpper()));
-            }
-            switch (sortOrder)
-            {
-                case "name_desc":
-                    stages = stages.OrderByDescending(s => s.Titel);
-                    break;
-                case "Date":
-                    stages = stages.OrderBy(s => s.Datum);
-                    break;
-                case "date_desc":
-                    stages = stages.OrderByDescending(s => s.Datum);
-                    break;
-                default:  // Name ascending 
-                    stages = stages.OrderBy(s => s.Titel);
-                    break;
-            }
+        //    if (!String.IsNullOrEmpty(searchString))
+        //    {
+        //        stages = stages.Where(s => s.Titel.ToUpper().Contains(searchString.ToUpper())
+        //                               || s.Omschrijving.ToUpper().Contains(searchString.ToUpper())
+        //                               || s.Semester.ToString() == searchString
+        //                               || s.BedrijfNaam.ToUpper().Contains(searchString.ToUpper()));
+        //    }
+        //    switch (sortOrder)
+        //    {
+        //        case "name_desc":
+        //            stages = stages.OrderByDescending(s => s.Titel);
+        //            break;
+        //        case "Date":
+        //            stages = stages.OrderBy(s => s.Datum);
+        //            break;
+        //        case "date_desc":
+        //            stages = stages.OrderByDescending(s => s.Datum);
+        //            break;
+        //        default:  // Name ascending 
+        //            stages = stages.OrderBy(s => s.Titel);
+        //            break;
+        //    }
 
-            int pageSize = 3;
-            int pageNumber = (page ?? 1);
-            return View(stages.ToPagedList(pageNumber, pageSize));
-        }
+        //    int pageSize = 3;
+        //    int pageNumber = (page ?? 1);
+        //    return View(stages.ToPagedList(pageNumber, pageSize));
+        //}
 
         [HttpPost]
         public ActionResult Create(User user)

@@ -1,15 +1,11 @@
-﻿@using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder
-@model Hogent_Stages.Repository.Stages.Stage
+﻿@using HoGent_Stages.Models.Domain
+
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Aanmaken Bedrijf";
 }
 
-@{
-    var db = Database.Open("stagesContext");
-    var data = db.Query("SELECT * FROM Stage WHERE aantalStudenten > 0 ORDER BY id DESC");
-}
 
 <script src="~/Scripts/jquery-1.8.2.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
@@ -34,17 +30,17 @@
             
         </tr>
         <tr></tr>
-        @foreach(var row in data)
+        @foreach(Stage stage in Model)
         {
             <tr>
-                <td>@Html.ActionLink("Deleted", "Deleted",  new { id = row.Id} )</td>
-                <td>@Html.ActionLink("Edit", "Edit",  new { id = row.Id} )</td>
-                <td>@row["titel"]</td>
-                <td>@row["omschrijving"]</td>
-                <td>@row["specialisatie"]</td>
-                <td>@row["semester"]</td>
-                <td>@row["aantalStudenten"]</td>
-                <td>@row["mentorNaam"]</td>
+                <td>@Html.ActionLink("Deleted", "Deleted",  new { id = stage.Id} )</td>
+                <td>@Html.ActionLink("Edit", "Edit",  new { id = stage.Id} )</td>
+                <td>@stage.titel</td>
+                <td>@stage.omschrijving</td>
+                <td>@stage.specialisatie</td>
+                <td>@stage.semester</td>
+                <td>@stage.aantalStudenten</td>
+                <td>@stage.mentorNaam</td>
             </tr>
         }
     </table>

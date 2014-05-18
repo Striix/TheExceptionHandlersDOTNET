@@ -12,6 +12,7 @@ namespace HoGent_Stages.Models.Domain
         void Add(Bedrijf bedrijf);
         void Delete(Bedrijf bedrijf);
         void SaveChanges();
+        bool ControleBedrijf(Bedrijf bedrijf);
         IEnumerable<Bedrijf> GetAll();
     }
 }

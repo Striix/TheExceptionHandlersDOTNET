@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
@@ -11,14 +12,25 @@ using System.Web.Security;
 using System.Web.UI.WebControls;
 using HoGent_Stages.Models.DAL;
 using HoGent_Stages.Models.Domain;
-using Hogent_Stages.Models.Domain;
+using Microsoft.Ajax.Utilities;
 
 namespace HoGent_Stages.Controllers
 {
-    [Authorize]
+
     public class BedrijfController : Controller
     {
-       private stagesContext db = new stagesContext();
+        private IBedrijfRepository bedrijfsRepository;
+        private IUserRepository userRepository;
+        private IStageRepository stageRepository;
+
+        public BedrijfController(IBedrijfRepository bedrijfsRepository, IUserRepository userRepository, IStageRepository stageRepository)
+        {
+            this.bedrijfsRepository = bedrijfsRepository;
+            this.userRepository = userRepository;
+            this.stageRepository = stageRepository;
+        }
+
+        static stagesContext db = new stagesContext();
 
         public ActionResult Create()
         {
@@ -27,7 +39,7 @@ namespace HoGent_Stages.Controllers
             return View();
         }
 
-
+        [Authorize]
         public ActionResult Stages()
         {
             ViewBag.Message = "Maak hier een stage aan";
@@ -35,6 +47,7 @@ namespace HoGent_Stages.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult Deleted()
         {
             ViewBag.Message = "Verwijder Stage";
@@ -42,14 +55,18 @@ namespace HoGent_Stages.Controllers
             return View();
         }
 
-
+        [Authorize]
         public ActionResult Overzicht()
         {
             ViewBag.Message = "Overzicht stages";
-
-            return View();
+            HttpCookie authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
+            FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
+            var bedrijf = db.Bedrijf.FirstOrDefault(u => u.email == ticket.Name);
+            var stagelijst = bedrijf.stages;
+            return View(stagelijst);
         }
 
+        [Authorize]
         public ActionResult Edit()
         {
             ViewBag.Message = "Stage aanpassen";
@@ -57,6 +74,7 @@ namespace HoGent_Stages.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult Home()
         {
             ViewBag.Message = "Home";
@@ -84,35 +102,30 @@ namespace HoGent_Stages.Controllers
         {
             if (ModelState.IsValid) //check for any validation errors
             {
-                BedrijfRepository bedrijfsRepository = new BedrijfRepository(db);   //Controleren of persoon zich al heeft ingeschreven
-                UserRepository userRepository = new UserRepository(db);
 
-                if(bedrijfsRepository.ControleBedrijf(bedrijf))
+                if (bedrijfsRepository.ControleBedrijf(bedrijf))
                 {
-                       
-                        var user = new User();
-                        user.email = bedrijf.email;
-                        user.wachtwoord = bedrijf.wachtwoord;
-                        user.rol = "bedrijf";
-                        user.bevestigWachtwoord = bedrijf.wachtwoord;
-                        userRepository.Add(user);
-                        userRepository.SaveChanges();
-                        bedrijfsRepository.Add(bedrijf);
-                        bedrijfsRepository.SaveChanges();
-                        FormsAuthentication.SetAuthCookie(user.email, false);
-                        return RedirectToAction("Home", "Bedrijf");
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index", "Home");       //Hier nog wijzigen
-                    }
-                
-            }
-            else
-            {
-                //when validation failed return viewmodel back to UI (View) 
-                return View(bedrijf);
-            }
+                    var user = new User();
+                    user.email = bedrijf.email;
+                    user.wachtwoord = bedrijf.wachtwoord;
+                    user.rol = "bedrijf";
+                    user.bevestigWachtwoord = bedrijf.wachtwoord;
+                    userRepository.Add(user);
+                    userRepository.SaveChanges();
+                    bedrijfsRepository.Add(bedrijf);
+                    bedrijfsRepository.SaveChanges();
+                    FormsAuthentication.SetAuthCookie(user.email, false);
+                    return RedirectToAction("Home", "Bedrijf");
+                 }
+                 else
+                 {
+                    return RedirectToAction("Index", "Home"); //Hier nog wijzigen
+                 }
+             }
+             else
+             {
+                 return RedirectToAction("Index", "Home");       //Hier nog wijzigen
+             }
         }
 
         [HttpPost]
@@ -120,20 +133,17 @@ namespace HoGent_Stages.Controllers
         {
             if (ModelState.IsValid) //check for any validation errors
             {
-                StageRepository stageRepository = new StageRepository(db);
                 HttpCookie authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
                 FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
-                var user = db.Bedrijf.FirstOrDefault(u => u.email == ticket.Name);
-                stage.bedrijfId = user.Id;                          // Hier zit nog een fout, neemt id niet over, id wordt wel ingeladen
-                stage.ToegevoegDateTime = DateTime.Now;
-                stageRepository.Add(stage);
-                stageRepository.SaveChanges();
+                var bedrijf = db.Bedrijf.FirstOrDefault(u => u.email == ticket.Name);
+                bedrijf.VoegStageToe(stage);
+                db.SaveChanges();
                 Mail();
                 return RedirectToAction("Overzicht", "Bedrijf");
             }
             else
             {
-                //when validation failed return viewmodel back to UI (View) 
+                ModelState.AddModelError("", "Er zijn gegevens niet ingevuld of incorrect");
                 return View(stage);
             }
         }
@@ -141,41 +151,65 @@ namespace HoGent_Stages.Controllers
         [HttpGet]
         public ActionResult Deleted(int id)
         {
-            StageRepository stageRepository = new StageRepository(db);
-            var stage = stageRepository.FindBy(id);
-            ViewData.Add("1", id);
+            Stage stage = db.Stage.Find(id);
+            if (stage == null)
+            {
+                return HttpNotFound();
+            }
             return View(stage);
         }
 
-        public ActionResult Verwijder(int id)
+        [HttpPost]
+        public ActionResult Deleted(Stage stage)
         {
-            StageRepository stageRepository = new StageRepository(db);
-            var stage2 = stageRepository.FindBy(id);
-            stageRepository.Delete(stage2);
-            stageRepository.SaveChanges();
-            return RedirectToAction("Overzicht", "Bedrijf");
+            //try
+            //{
+                HttpCookie authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
+                FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
+                var bedrijf = db.Bedrijf.FirstOrDefault(u => u.email == ticket.Name);
+                bedrijf.VerwijderStage(stage);
+                db.SaveChanges();
+                return RedirectToAction("Overzicht", "Bedrijf");
+        //    }
+        //    catch (DataException /* dex */)
+        //    {
+        //        ModelState.AddModelError("", "De stage is niet verwijdert. Probeer opnieuw.");
+        //        return View(stage);
+        //    }
         }
 
 
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            StageRepository stageRepository = new StageRepository(db);
-            var stage = stageRepository.FindBy(id);
-            ViewData.Add("1", id);
+            Stage stage = db.Stage.Find(id);
+            if (stage == null)
+            {
+                return HttpNotFound();
+            }
             return View(stage);
         }
 
         [HttpPost]
-        public ActionResult Edit(Stage stage) //Oude stage verwijderen en nieuwe toevoegen --> automatisch bovenaan lijst
+        public ActionResult Edit(Stage stage)
         {
-            StageRepository stageRepository = new StageRepository(db);
-            var origineel = stageRepository.FindBy(stage.Id);
-            stageRepository.Delete(origineel);
-            stageRepository.Add(stage);
-            stageRepository.SaveChanges();
-            return RedirectToAction("Overzicht", "Bedrijf");
-            
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    HttpCookie authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
+                    FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
+                    var bedrijf = db.Bedrijf.FirstOrDefault(u => u.email == ticket.Name);
+                    bedrijf.WijzigStage(stage);
+                    db.SaveChanges();
+                    return RedirectToAction("Overzicht", "Bedrijf");
+                }
+            }
+            catch (DataException /* dex */)
+            {
+                ModelState.AddModelError("", "Wijzigingen kunnen niet worden opgeslagen. Probeer opnieuw.");
+            }
+            return View(stage);
         }
 
 

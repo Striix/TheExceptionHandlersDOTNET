@@ -4,8 +4,9 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
+using HoGent_Stages.Models.DAL.Mapper;
 using HoGent_Stages.Models.Domain;
-using Hogent_Stages.Models.Domain;
+using HoGent_Stages.Models.Domain;
 using MySql.Data.Entity;
 
 namespace HoGent_Stages.Models.DAL
@@ -17,7 +18,7 @@ namespace HoGent_Stages.Models.DAL
         {
 
             Database.SetInitializer<stagesContext>(new DropCreateDatabaseIfModelChanges<stagesContext>()); 
-            Database.Initialize(false);
+           // Database.Initialize(false);
         }
 
         public DbSet<Bedrijf> Bedrijf { get; set; }
@@ -27,11 +28,9 @@ namespace HoGent_Stages.Models.DAL
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-            //modelBuilder.Configurations.Add(new BedrijfMap());
-            //modelBuilder.Configurations.Add(new StageMap());
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.Configurations.Add(new BedrijfMapper());
+            modelBuilder.Configurations.Add(new StageMapper());
         }
     }
 }
