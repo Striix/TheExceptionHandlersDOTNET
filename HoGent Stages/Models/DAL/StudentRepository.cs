@@ -37,6 +37,10 @@ namespace HoGent_Stages.Models.DAL
             {
                 return students.Find(studentId);
             }
+            public Student FindById(int studentId)
+            {
+                return students.FirstOrDefault(b => b.Id == studentId);
+            }
 
             public IQueryable<Student> FindAll()
             {

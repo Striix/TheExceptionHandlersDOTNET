@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Web.Mvc;
 using System.Web.Security;
 using HoGent_Stages.Controllers;
+using Hogent_Stages.Models;
 using HoGent_Stages.Models.DAL;
 using Ninject.Activation;
 
@@ -52,8 +53,13 @@ namespace HoGent_Stages.Models.Domain
         [Display(Name = "Gsm-nummer")]
         public int gsm { get; set; }
 
+        public ICollection<Stage> Stageopdrachten { get; set; } 
         public byte[] Foto { get; set; }
 
+        public Student()
+        {
+            Stageopdrachten = new List<Stage>();
+        }
         public void WijzigGegevens(Student student)
         {
             naam = student.naam;
@@ -84,6 +90,47 @@ namespace HoGent_Stages.Models.Domain
         {
             
         }
+         public IEnumerable<Stage> Filter(ICollection<Bedrijf> bedrijven, string filter)
+         {
+             IEnumerable<Stage> lijst = new List<Stage>();
+            if (!String.IsNullOrEmpty(filter))
+            {
+                lijst = Stageopdrachten.OrderBy(b => b.titel).Where(b => b.titel.ToUpper().Contains(filter.ToUpper())
+                                                                     ||
+                                                                     b.omschrijving.ToUpper().Contains(filter.ToUpper())
+                                                                     || b.semester.ToString() == filter);
+                for (int i = 0; i < bedrijven.Count; i++)
+                {
+                    if (bedrijven.ElementAt(i).stages.Any()) 
+                        if(bedrijven.ElementAt(i).bedrijfsNaam.Contains(filter))
+                            for(int j = 0; j < bedrijven.ElementAt(i).stages.Count; j++)
+                            lijst.ToList().Add(bedrijven.ElementAt(i).stages.ElementAt(j));
+                }       
+            }
+            return lijst;
+        }
+
+         public IEnumerable<Stage> Sort( string sortOrder)
+         {
+             IEnumerable<Stage> stages = new List<Stage>();
+             switch (sortOrder)
+             {
+                 case "name_desc":
+                     stages = stages.OrderByDescending(s => s.titel);
+                     break;
+                 case "Date":
+                     stages = stages.OrderBy(s => s.ToegevoegDateTime);
+                     break;
+                 case "date_desc":
+                     stages = stages.OrderByDescending(s => s.ToegevoegDateTime);
+                     break;
+                 default:  // Name ascending 
+                     stages = stages.OrderBy(s => s.titel);
+                     break;
+             }
+             return stages;
+         }
+
         //public ViewResult Overzicht(string sortOrder, string currentFilter, string searchString, int? page)
         //{
         //    ViewBag.CurrentSort = sortOrder;

@@ -1,0 +1,27 @@
+﻿@model Hogent_Stages.Models.StudentModel
+
+@{
+    var foto = Model.Foto;
+}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>title</title>
+    </head>
+    <body>
+        <div>
+              @using (Html.BeginForm("Profiel", "Student", FormMethod.Post, new {enctype = "multipart/form-data"}))
+              {
+
+                  @Html.AntiForgeryToken()
+                  <li>
+                    @Html.Label("foto:")
+                    <img alt="" width="300" height="200" src="data:image/jpeg;base64,@foto" /> <input type="file" name="image" />
+                   
+                </li>
+              }
+        </div>
+    </body>
+</html>

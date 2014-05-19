@@ -441,6 +441,7 @@
     <Content Include="Views\Student\Home.cshtml" />
     <Content Include="Views\Student\Overzicht.cshtml" />
     <Content Include="Views\Student\Gegevens.cshtml" />
+    <Content Include="Views\Student\Profiel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
