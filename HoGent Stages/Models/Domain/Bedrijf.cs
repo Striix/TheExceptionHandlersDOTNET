@@ -71,11 +71,26 @@ namespace HoGent_Stages.Models.Domain
             public string contactPersoon { get; set; }
 
             public virtual ICollection<Stage> stages { get; set; }
-            public virtual Mentor mentor { get; set; } 
+            public virtual Mentor MentorBedrijf { get; set; } 
 
             public Bedrijf()
             {
                 stages = new List<Stage>();
+            }
+
+            public void Mail()
+            {
+                var myMailMessage = new System.Net.Mail.MailMessage();
+                myMailMessage.From = new System.Net.Mail.MailAddress("gauthier.meert.gm@gmail.com");
+                myMailMessage.To.Add("gauthier_meert@hotmail.com");// Mail would be sent to this address
+                myMailMessage.Subject = "Feedback registratie";
+                myMailMessage.Body = "Uw registratie is geslaagd!";
+
+                var smtpServer = new System.Net.Mail.SmtpClient("smtp.gmail.com");
+                smtpServer.Port = 587;
+                smtpServer.Credentials = new System.Net.NetworkCredential("gauthier.meert.gm@gmail.com", "philips69");
+                smtpServer.EnableSsl = true;
+                smtpServer.Send(myMailMessage);
             }
 
             public Stage VoegStageToe(Stage stage)
@@ -109,7 +124,9 @@ namespace HoGent_Stages.Models.Domain
 
             public void VoegMentorToe(Mentor mentor)
             {
-                mentors.Add(mentor);   
+               stagesContext db = new stagesContext();
+                MentorBedrijf = mentor;
+                db.Mentor.Add(MentorBedrijf);
             }
 
         }

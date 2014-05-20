@@ -15,7 +15,7 @@ namespace HoGent_Stages.Models.DAL.Mapper
             ToTable("Bedrijf");
 
             HasMany(b => b.stages).WithRequired().Map(s => s.MapKey("BedrijfId")).WillCascadeOnDelete(false );
-            HasOptional(b => b.mentor).WithRequired().Map(m => m.MapKey("BedrijfId")).WillCascadeOnDelete(false);
+            HasOptional(m => m.MentorBedrijf).WithRequired().Map(s => s.MapKey("BedrijfId")).WillCascadeOnDelete(false);
             
         }
 

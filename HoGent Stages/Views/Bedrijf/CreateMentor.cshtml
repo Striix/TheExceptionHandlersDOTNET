@@ -1,4 +1,4 @@
-﻿@model HoGent_Stages.Models.Domain.Stage
+﻿@model HoGent_Stages.Models.Domain.Mentor
 
 @{
     ViewBag.Title = "Aanmaken Stage";
@@ -8,7 +8,6 @@
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 <hgroup class="title">
-    <h3>Aanmaken Stage</h3>
 </hgroup>
 
 <article>
@@ -17,80 +16,78 @@
             <table cellspacing="2" cellpadding="2" border="0">
                 <tr>
                     <td>
-                        @Html.LabelFor(x => x.titel)
+                        @Html.LabelFor(x => x.aanspreektitel)
                     </td>
                     <td>
-                        @Html.TextBoxFor(x => x.titel)
+                    <select name="Aanspreektitel">
+                        <option value="dhr.">Dhr.</option>
+                        <option value="mevr.">Mevr.</option>
+                    </select>
                     </td>
                     <td>
-                        @Html.ValidationMessageFor(x => x.titel)
+                        @Html.ValidationMessageFor(x => x.aanspreektitel)
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        @Html.LabelFor(x => x.omschrijving)
+                        @Html.LabelFor(x => x.naam)
                     </td>
                     <td>
-                        @Html.TextBoxFor(x => x.omschrijving)
+                        @Html.TextBoxFor(x => x.naam)
                     </td>
                     <td>
-                        @Html.ValidationMessageFor(x => x.omschrijving)
+                        @Html.ValidationMessageFor(x => x.naam)
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        @Html.LabelFor(x => x.aantalStudenten)
+                        @Html.LabelFor(x => x.voornaam)
                     </td>
                     <td>
-                        @Html.TextBoxFor(x => x.aantalStudenten)
+                        @Html.TextBoxFor(x => x.voornaam)
                     </td>
                     <td>
-                        @Html.ValidationMessageFor(x => x.aantalStudenten)
+                        @Html.ValidationMessageFor(x => x.voornaam)
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        @Html.LabelFor(x => x.specialisatie)
+                        @Html.LabelFor(x => x.email)
                     </td>
                     <td>
-                        @Html.TextBoxFor(x => x.specialisatie)
+                        @Html.TextBoxFor(x => x.email)
                     </td>
                     <td>
-                        @Html.ValidationMessageFor(x => x.specialisatie)
+                        @Html.ValidationMessageFor(x => x.email)
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        @Html.LabelFor(x => x.semester)
+                        @Html.LabelFor(x => x.functie)
                     </td>
                     <td>
-                        <select name="Semester">
-                            <option value="1">1ste Semester</option>
-                            <option value="2">2de Semester</option>
-                        </select>
+                        @Html.TextBoxFor(x => x.functie)
                     </td>
                     <td>
-                        @Html.ValidationMessageFor(x => x.semester)
+                        @Html.ValidationMessageFor(x => x.functie)
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        @Html.LabelFor(x => x.mentorNaam)
+                        @Html.LabelFor(x => x.gsm)
                     </td>
                     <td>
-                        <select name="MentorNaam">
-                            <option value="gauthier_meert@hotmail.com">Gauthier Meert</option>
-                            <option value="mattia_wijns@hotmail.com"> Mattia wijns</option>
-                        </select>
+                        @Html.TextBoxFor(x => x.gsm)
                     </td>
                     <td>
-                        @Html.ValidationMessageFor(x => x.mentorNaam)
+                        @Html.ValidationMessageFor(x => x.gsm)
                     </td>
                 </tr>
+
                 <tr>
                     <td>
                         <br />
-                        <button class="btn btn-default" type="submit">
+                        <button type="submit">
                             <span>Opslaan</span>
                         </button>
                     </td>

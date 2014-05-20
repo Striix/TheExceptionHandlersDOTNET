@@ -39,7 +39,6 @@ namespace HoGent_Stages.Models.Domain
         [Required]
         public DateTime ToegevoegDateTime { get; set; }
 
-        //public virtual Bedrijf Bedrijf { get; set; }
 
     }
 }

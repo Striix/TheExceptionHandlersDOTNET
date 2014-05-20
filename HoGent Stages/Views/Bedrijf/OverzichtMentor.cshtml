@@ -1,0 +1,39 @@
+﻿@using System.Web.UI.WebControls
+@model HoGent_Stages.Models.Domain.Mentor
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Overzicht mentor";
+}
+
+
+<script src="~/Scripts/jquery-1.8.2.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<hgroup class="title">
+    <h3>Mentor</h3>
+</hgroup>
+
+<article>
+
+
+    <dl>         
+        <dt>Naam</dt>
+        <dd>@Html.DisplayFor(x => x.aanspreektitel) @Html.DisplayFor(x=>x.naam) @Html.DisplayFor(x => x.voornaam)</dd>
+             
+        <dt>E-mailadres </dt>
+        <dd>@Html.DisplayFor(x=> x.email)</dd>
+                 
+        <dt>Gsm</dt>
+        <dd>@Html.DisplayFor(x => x.gsm)</dd>
+                 
+        <dt>Functie</dt>
+        <dd>@Html.DisplayFor(x => x.functie)</dd>
+    </dl>
+        
+        <a class="btn btn-default" href=@Url.Action("EditMentor", "Bedrijf")>Edit &raquo;</a>
+        
+
+
+</article>

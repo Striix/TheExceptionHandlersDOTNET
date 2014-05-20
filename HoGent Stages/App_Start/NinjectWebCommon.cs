@@ -67,6 +67,7 @@ namespace HoGent_Stages.App_Start
             kernel.Bind<IBedrijfRepository>().To<BedrijfRepository>().InRequestScope();
             kernel.Bind<IUserRepository>().To<UserRepository>().InRequestScope();
             kernel.Bind<IStageRepository>().To<StageRepository>().InRequestScope();
+            kernel.Bind<IBegeleiderRepository>().To<BegeleiderRepository>().InRequestScope();
             kernel.Bind<stagesContext>().ToSelf().InRequestScope();
 
         }        

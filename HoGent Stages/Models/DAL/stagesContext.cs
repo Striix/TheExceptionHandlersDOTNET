@@ -25,6 +25,8 @@ namespace HoGent_Stages.Models.DAL
         public DbSet<Stage> Stage { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<Student> Student { get; set; }
+        public DbSet<Mentor> Mentor { get; set; }
+        public DbSet<Begeleider> Begeleider { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -15,6 +15,7 @@ namespace HoGent_Stages.Models.DAL.Mapper
 
             //Table
             ToTable("Mentor");
+ 
 
         }
 

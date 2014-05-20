@@ -261,9 +261,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BedrijfController.cs" />
+    <Compile Include="Controllers\BegeleiderController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DAL\BedrijfRepository.cs" />
+    <Compile Include="Models\DAL\BegeleiderRepository.cs" />
     <Compile Include="Models\DAL\Mapper\BedrijfMapper.cs" />
     <Compile Include="Models\DAL\Mapper\MentorMapper.cs" />
     <Compile Include="Models\DAL\Mapper\StageMapper.cs" />
@@ -272,12 +274,15 @@
     <Compile Include="Models\DAL\StudentRepository.cs" />
     <Compile Include="Models\DAL\UserRepository.cs" />
     <Compile Include="Models\Domain\Bedrijf.cs" />
+    <Compile Include="Models\Domain\Begeleider.cs" />
+    <Compile Include="Models\Domain\ContactModels.cs" />
     <Compile Include="Models\Domain\IBedrijfRepository.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Domain\IBegeleiderRepository.cs" />
     <Compile Include="Models\Domain\IStageRepository.cs" />
     <Compile Include="Models\Domain\IStudentRepository.cs" />
     <Compile Include="Models\Domain\IUserRepository.cs" />
@@ -362,11 +367,11 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\Domain\domain.cd" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Models\Domain\ClassDiagram1.cd" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -441,6 +446,13 @@
     <Content Include="Views\Student\Home.cshtml" />
     <Content Include="Views\Student\Overzicht.cshtml" />
     <Content Include="Views\Student\Gegevens.cshtml" />
+    <Content Include="Views\Bedrijf\CreateMentor.cshtml" />
+    <Content Include="Views\Bedrijf\OverzichtMentor.cshtml" />
+    <Content Include="Views\Begeleider\Home.cshtml" />
+    <Content Include="Views\Begeleider\Create.cshtml" />
+    <Content Include="Views\Begeleider\Gegevens.cshtml" />
+    <Content Include="Views\Begeleider\Overzicht.cshtml" />
+    <Content Include="Views\Home\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
