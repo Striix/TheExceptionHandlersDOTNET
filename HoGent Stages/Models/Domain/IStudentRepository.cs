@@ -7,7 +7,7 @@ namespace HoGent_Stages.Models.Domain
 {
     public interface IStudentRepository
     {
-        Student FindBy(int studentId);
+        Student FindBy(string studentId);
         IQueryable<Student> FindAll();
         void Add(Student student);
         void Delete(Student student);

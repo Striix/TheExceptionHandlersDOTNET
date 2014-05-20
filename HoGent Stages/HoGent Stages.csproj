@@ -446,13 +446,6 @@
     <Content Include="Views\Student\Home.cshtml" />
     <Content Include="Views\Student\Overzicht.cshtml" />
     <Content Include="Views\Student\Gegevens.cshtml" />
-    <Content Include="Views\Bedrijf\CreateMentor.cshtml" />
-    <Content Include="Views\Bedrijf\OverzichtMentor.cshtml" />
-    <Content Include="Views\Begeleider\Home.cshtml" />
-    <Content Include="Views\Begeleider\Create.cshtml" />
-    <Content Include="Views\Begeleider\Gegevens.cshtml" />
-    <Content Include="Views\Begeleider\Overzicht.cshtml" />
-    <Content Include="Views\Home\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

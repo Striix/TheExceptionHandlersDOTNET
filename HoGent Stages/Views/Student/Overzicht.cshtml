@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<HoGent_Stages.Controllers.StudentController.OverzichtViewModel>
+﻿@model PagedList.IPagedList<HoGent_Stages.Models.Domain.Stage>
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
@@ -45,19 +45,19 @@
             @Html.DisplayFor(modelItem => item.BedrijfNaam) 
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Titel)
+            @Html.DisplayFor(modelItem => item.titel)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Omschrijving)
+            @Html.DisplayFor(modelItem => item.omschrijving)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AantalStudenten)
+            @Html.DisplayFor(modelItem => item.aantalStudenten)
         </td>
          <td>
-            @Html.DisplayFor(modelItem => item.Semester)
+            @Html.DisplayFor(modelItem => item.semester)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Datum)
+            @Html.DisplayFor(modelItem => item.ToegevoegDateTime)
         </td>
     </tr>
 }
