@@ -40,7 +40,7 @@ namespace HoGent_Stages.Models.DAL
 
         public IQueryable<Stage> FindAll()
         {
-            return stages.Include(b => b).OrderBy(b => b.titel);
+            return stages.Include(b => b).OrderBy(b => b.Id);
         }
 
         public void SaveChanges()

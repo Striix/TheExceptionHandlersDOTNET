@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - How2Stage</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -26,9 +26,13 @@
                     else
                     {
                         FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
-                        if (ticket.Name.Contains("student.hogent.be")) // Hier nog administrator toevoegen
+                        if (ticket.Name.Contains("@student.hogent.be")) // Hier nog administrator toevoegen
                         {
                         @Html.ActionLink("How2Stage", "Home", "Student", null, new {@class = "navbar-brand"})
+                        }
+                        else if (ticket.Name.Contains("@hogent.be"))
+                        {
+                        @Html.ActionLink("How2Stage", "Home", "Begeleider", null, new {@class = "navbar-brand"})   
                         }
                         else
                         {
@@ -50,7 +54,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - The Exception Handlers V2.0 - How2Stage</p>
         </footer>
     </div>
 

@@ -11,7 +11,7 @@ namespace HoGent_Stages.Models.DAL.Mapper
     {
         public StageMapper()
         {
-            Property(t => t.titel).IsRequired().HasMaxLength(100);
+            Property(t => t.Titel).IsRequired().HasMaxLength(100);
 
             //Table
             ToTable("Stage");

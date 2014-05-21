@@ -35,16 +35,15 @@
             <tr>
                 <td>@Html.ActionLink("Delete", "Deleted",  new { id = stage.Id} )</td>
                 <td>@Html.ActionLink("Edit", "Edit",  new { id = stage.Id} )</td>
-                <td>@stage.Titel</td>
-                <td>@stage.Omschrijving</td>
-                <td>@stage.Specialisatie</td>
-                <td>@stage.Semester</td>
-                <td>@stage.AantalStudenten</td>
-                <td>@stage.MentorNaam</td>
+                <td>@stage.titel</td>
+                <td>@stage.omschrijving</td>
+                <td>@stage.specialisatie</td>
+                <td>@stage.semester</td>
+                <td>@stage.aantalStudenten</td>
+                <td>@stage.mentorNaam</td>
             </tr>
         }
     </table>
-<a class="btn btn-default" href=@Url.Action("Stages", "Bedrijf")>Stage toevoegen &raquo;</a>
 
 
 </article>

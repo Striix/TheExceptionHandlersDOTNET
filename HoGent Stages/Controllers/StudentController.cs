@@ -17,54 +17,55 @@ namespace HoGent_Stages.Controllers
     public class StudentController : Controller
     {
         static stagesContext db = new stagesContext();
-         StudentRepository studentRep = new StudentRepository(db);
+        StudentRepository studentRep = new StudentRepository(db);
         BedrijfRepository bedrijfRep = new BedrijfRepository(db);
         StageRepository stageRep = new StageRepository(db);
 
-         /*[AllowAnonymous]
-         public ActionResult Profiel()
-         {
-             StageBegeleider begeleider = rep.FindBy(User.Identity.Name);
-             try
-             {
+        //[AllowAnonymous]
+        //public ActionResult Profiel()
+        //{
+        //    StageBegeleider begeleider = rep.FindBy(User.Identity.Name);
+        //    try
+        //    {
 
-                 var foto = (Byte[])begeleider.Foto;
-                 if (foto != null)
-                 {
-                     begeleider.FotoString = Convert.ToBase64String(begeleider.Foto);
-                 }
-             }
-             catch
-             {
-                 return RedirectToAction("Index", "Begeleider");
-             }
+        //        var foto = (Byte[])begeleider.Foto;
+        //        if (foto != null)
+        //        {
+        //            begeleider.FotoString = Convert.ToBase64String(begeleider.Foto);
+        //        }
+        //    }
+        //    catch
+        //    {
+        //        return RedirectToAction("Index", "Begeleider");
+        //    }
 
-             return View(begeleider);
-         }*///<<<<<<<<<<<Dit is nodig vo als ge geen model gebruiken. string fotostring toevoegen aan student.>>>>>>>>>>>
-         [AllowAnonymous]
-         public ActionResult Profiel()
-         {
-             Student student = studentRep.FindBy(User.Identity.Name);
-             StudentModel model = new StudentModel();
-             try
-             {
-                 var foto = (Byte[])student.Foto;
-                 if (foto != null)
-                     model.Foto = Convert.ToBase64String(foto);
-                 else
-                 {
-                     foto = new byte[20];
-                     model.Foto = Convert.ToBase64String(foto);
-                 }          
-             }
-             catch
-             {
-                 return RedirectToAction("Index", "Home");
-             }
+        //    return View(begeleider);
+        //}
+        //<<<<<<<<<<<Dit is nodig vo als ge geen model gebruiken. string fotostring toevoegen aan student.>>>>>>>>>>>
+        [AllowAnonymous]
+        public ActionResult Profiel()
+        {
+            Student student = studentRep.FindBy(User.Identity.Name);
+            StudentModel model = new StudentModel();
+            try
+            {
+                var foto = (Byte[])student.Foto;
+                if (foto != null)
+                    model.Foto = Convert.ToBase64String(foto);
+                else
+                {
+                    foto = new byte[20];
+                    model.Foto = Convert.ToBase64String(foto);
+                }
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
 
-             return View(model);
-         }
-         
+            return View(model);
+        }
+
         [HttpPost]
         [AllowAnonymous]
 
@@ -100,6 +101,64 @@ namespace HoGent_Stages.Controllers
             return View();
         }
 
+        //public ViewResult Overzicht(string sortOrder, string currentFilter, string searchString, int? page)
+        //{
+        //    ViewBag.CurrentSort = sortOrder;
+        //    ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+        //    ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+        //    if (searchString != null)
+        //    {
+        //        page = 1;
+        //    }
+        //    else
+        //    {
+        //        searchString = currentFilter;
+        //    }
+
+        //    ViewBag.CurrentFilter = searchString;
+
+        //    var stages = (from s in db.Stage
+        //                  join b in db.Bedrijf on s.bedrijfId equals b.Id
+        //                  select new StudentController.OverzichtViewModel()
+        //                   {
+        //                       BedrijfNaam = b.bedrijfsNaam,
+        //                       Titel = s.titel,
+        //                       Omschrijving = s.omschrijving,
+        //                       AantalStudenten = s.aantalStudenten,
+        //                       Semester = s.semester,
+        //                       Datum = s.ToegevoegDateTime
+        //                   });
+
+
+
+        //    if (!String.IsNullOrEmpty(searchString))
+        //    {
+        //        stages = stages.Where(s => s.Titel.ToUpper().Contains(searchString.ToUpper())
+        //                               || s.Omschrijving.ToUpper().Contains(searchString.ToUpper())
+        //                               || s.Semester.ToString() == searchString
+        //                               || s.BedrijfNaam.ToUpper().Contains(searchString.ToUpper()));
+        //    }
+        //    switch (sortOrder)
+        //    {
+        //        case "name_desc":
+        //            stages = stages.OrderByDescending(s => s.Titel);
+        //            break;
+        //        case "Date":
+        //            stages = stages.OrderBy(s => s.Datum);
+        //            break;
+        //        case "date_desc":
+        //            stages = stages.OrderByDescending(s => s.Datum);
+        //            break;
+        //        default:  // Name ascending 
+        //            stages = stages.OrderBy(s => s.Titel);
+        //            break;
+        //    }
+
+        //    int pageSize = 3;
+        //    int pageNumber = (page ?? 1);
+        //    return View(stages.ToPagedList(pageNumber, pageSize));
+        //}
 
 
         [HttpPost]
@@ -119,10 +178,10 @@ namespace HoGent_Stages.Controllers
                     Student student = new Student();
                     String[] namen = user.email.Split('@');
                     String[] naam = namen[0].Split('.');
-                    student.voorNaam = naam[0];
-                    student.naam = naam[1];
-                    student.wachtwoord = user.wachtwoord;
-                    student.email = user.email;
+                    student.VoorNaam = naam[0];
+                    student.Naam = naam[1];
+                    student.Wachtwoord = user.wachtwoord;
+                    student.Email = user.email;
                     studentRepository.Add(student);
                     studentRepository.SaveChanges();
                     user.rol = "student";
@@ -149,7 +208,7 @@ namespace HoGent_Stages.Controllers
         {
             HttpCookie authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
             FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
-            var student = db.Student.FirstOrDefault(u => u.email == ticket.Name);
+            var student = db.Student.FirstOrDefault(u => u.Email == ticket.Name);
             return View(student);
         }
 
@@ -160,23 +219,23 @@ namespace HoGent_Stages.Controllers
             {
                 StudentRepository studentRepository = new StudentRepository(db);
                 var origineel = studentRepository.FindById(student.Id);
-                origineel.gsm = student.gsm;
-                origineel.nummer = student.nummer;
-                origineel.plaats = student.plaats;
-                origineel.postcode = student.postcode;
-                origineel.straat = student.straat;
+                origineel.Gsm = student.Gsm;
+                origineel.Nummer = student.Nummer;
+                origineel.Plaats = student.Plaats;
+                origineel.Postcode = student.Postcode;
+                origineel.Straat = student.Straat;
                 studentRepository.SaveChanges();
-                return RedirectToAction("Home", "Student"); 
+                return RedirectToAction("Home", "Student");
             }
             else
             {
                 return RedirectToAction("about", "home");
             }
-            
+
 
         }
 
-       
+
         public ViewResult Overzicht(string sortOrder, string currentFilter, string searchString, int? page)
         {
             Student student = studentRep.FindBy(User.Identity.Name);
@@ -199,7 +258,7 @@ namespace HoGent_Stages.Controllers
             stages = student.Filter(bedrijfRep.FindAll().ToList(), searchString);
             stages = student.Sort(sortOrder);
 
-            int pageSize = 3; 
+            int pageSize = 3;
             int pageNumber = (page ?? 1);
             return View(stages.ToPagedList(pageNumber, pageSize));
         }

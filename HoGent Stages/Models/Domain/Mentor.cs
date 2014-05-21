@@ -32,8 +32,5 @@ namespace HoGent_Stages.Models.Domain
         [Display(Name = "Aanspreektitel")]
         [Required(ErrorMessage = "{0} is verplicht")]
         public string aanspreektitel { get; set; }
-
-
-
     }
 }

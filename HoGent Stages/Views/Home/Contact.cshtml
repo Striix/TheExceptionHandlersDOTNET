@@ -1,17 +1,51 @@
-﻿@{
-    ViewBag.Title = "Contact";
+﻿@model HoGent_Stages.Models.Domain.ContactModels
+@{
+    ViewBag.Title = "Contacteer ons";
 }
 <h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+@*<h3>@ViewBag.Message</h3>*@
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
-
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<h4>Projectwerking</h4>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <div class="row">
+        @Html.LabelFor(model => model.naam, "Naam: ")
+        @Html.EditorFor(model => model.naam)
+        @Html.ValidationMessageFor(model => model.naam)
+    </div>
+    <div class="row">
+        @Html.LabelFor(model => model.voornaam, "Voornaam: ")
+        @Html.EditorFor(model => model.voornaam)
+    </div>
+    @Html.ValidationSummary(true)
+    <div class="row">
+        @Html.LabelFor(model => model.email, "Email: ")
+        @Html.EditorFor(model => model.email)
+        @Html.ValidationMessageFor(model => model.email)
+    </div>
+    @Html.ValidationSummary(true)
+    <div class="row">
+        @Html.LabelFor(model => model.bedrijf, "Bedrijf: ")
+        @Html.EditorFor(model => model.bedrijf)
+        @Html.ValidationMessageFor(model => model.bedrijf)
+    </div>
+    <div class="row">
+        @Html.LabelFor(model => model.omschrijvingProject, "Omschrijving van het project: ")
+        @Html.EditorFor(model => model.omschrijvingProject)
+    </div>
+    <div class="row">
+        @Html.LabelFor(model => model.omschrijvingBachelorProef, "Omschrijving van de bachelorproef: ")
+        @Html.EditorFor(model => model.omschrijvingBachelorProef)
+    </div>
+    @Html.ValidationSummary(true)
+    <div class="row">
+        @Html.LabelFor(model => model.vraagOpmerking, "Vraag of opmerking: ")
+        @Html.EditorFor(model => model.vraagOpmerking)
+        @Html.ValidationMessageFor(model => model.vraagOpmerking)
+    </div>
+    <div class="row">
+        <input type="submit" value="submit" />
+        <input type="reset" value="reset" />
+    </div>
+}
