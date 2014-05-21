@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
@@ -11,14 +12,15 @@ using MySql.Data.Entity;
 namespace HoGent_Stages.Models.DAL
 {
     [DbConfigurationType(typeof(MySqlEFConfiguration))]
-    public class stagesContext : DbContext
+    public class StagesContext : DbContext
     {
-        public stagesContext()
+        public StagesContext()
         {
 
-            Database.SetInitializer<stagesContext>(new DropCreateDatabaseIfModelChanges<stagesContext>()); 
+            Database.SetInitializer<StagesContext>(new DropCreateDatabaseAlways<StagesContext>()); 
            // Database.Initialize(false);
         }
+
 
         public DbSet<Bedrijf> Bedrijf { get; set; }
         public DbSet<Stage> Stage { get; set; }
@@ -32,6 +34,7 @@ namespace HoGent_Stages.Models.DAL
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Configurations.Add(new BedrijfMapper());
             modelBuilder.Configurations.Add(new StageMapper());
+            modelBuilder.Conventions.Remove<IncludeMetadataConvention>();
         }
     }
 }

@@ -9,10 +9,10 @@ namespace HoGent_Stages.Models.DAL
 {
     public class StageRepository : IStageRepository
     {
-        private stagesContext context;
+        private StagesContext context;
         private DbSet<Stage> stages;
 
-        public StageRepository(stagesContext context)
+        public StageRepository(StagesContext context)
         {
             this.context = context;
             stages = context.Stage;

@@ -10,10 +10,10 @@ namespace HoGent_Stages.Models.DAL
     public class BegeleiderRepository : IBegeleiderRepository
     {
 
-        private stagesContext context;
+        private StagesContext context;
         private DbSet<Begeleider> begeleiders;
 
-        public BegeleiderRepository(stagesContext context)
+        public BegeleiderRepository(StagesContext context)
             {
                 this.context = context;
                 begeleiders = context.Begeleider;

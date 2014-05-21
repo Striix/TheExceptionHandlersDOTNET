@@ -130,6 +130,11 @@ namespace HoGent_Stages.Models.Domain
             }
             return stages;
         }
+
+        internal void setUpdates(StudentModel model)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

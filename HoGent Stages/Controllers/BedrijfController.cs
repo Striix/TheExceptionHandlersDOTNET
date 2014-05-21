@@ -31,7 +31,7 @@ namespace HoGent_Stages.Controllers
             this.stageRepository = stageRepository;
         }
 
-        static stagesContext db = new stagesContext();
+        static StagesContext db = new StagesContext();
 
         public ActionResult Create()
         {

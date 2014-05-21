@@ -15,7 +15,7 @@ namespace Hogent_Stages.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        private stagesContext db = new stagesContext();
+        private StagesContext db = new StagesContext();
         //
         // GET: /Account/Login
         [AllowAnonymous]
@@ -79,7 +79,7 @@ namespace Hogent_Stages.Controllers
         {
             bool IsValid = false;
 
-            using (var db = new stagesContext())
+            using (var db = new StagesContext())
             {
                 var user = db.User.FirstOrDefault(u => u.email == email);
 

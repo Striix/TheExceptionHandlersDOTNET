@@ -16,7 +16,7 @@ namespace HoGent_Stages.Controllers
     [Authorize]
     public class StudentController : Controller
     {
-        static stagesContext db = new stagesContext();
+        static StagesContext db = new StagesContext();
         StudentRepository studentRep = new StudentRepository(db);
         BedrijfRepository bedrijfRep = new BedrijfRepository(db);
         StageRepository stageRep = new StageRepository(db);

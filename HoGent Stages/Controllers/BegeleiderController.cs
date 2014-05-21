@@ -14,7 +14,7 @@ namespace HoGent_Stages.Controllers
         private IBegeleiderRepository begeleiderRepository;
         private IUserRepository userRepository;
         private IStageRepository stageRepository;
-        private stagesContext db = new stagesContext();
+        private StagesContext db = new StagesContext();
 
         public BegeleiderController(IBegeleiderRepository begeleiderRepository, IUserRepository userRepository, IStageRepository stageRepository)
         {

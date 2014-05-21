@@ -124,7 +124,7 @@ namespace HoGent_Stages.Models.Domain
 
             public void VoegMentorToe(Mentor mentor)
             {
-               stagesContext db = new stagesContext();
+               StagesContext db = new StagesContext();
                 MentorBedrijf = mentor;
                 db.Mentor.Add(MentorBedrijf);
             }
