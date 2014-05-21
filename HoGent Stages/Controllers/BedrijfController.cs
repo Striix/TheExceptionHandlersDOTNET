@@ -21,14 +21,14 @@ namespace HoGent_Stages.Controllers
     {
         private IBedrijfRepository bedrijfsRepository;
         private IUserRepository userRepository;
-        private IStageRepository stageRepository;
+        private IStageRepository _stageRepository;
  
 
         public BedrijfController(IBedrijfRepository bedrijfsRepository, IUserRepository userRepository, IStageRepository stageRepository)
         {
             this.bedrijfsRepository = bedrijfsRepository;
             this.userRepository = userRepository;
-            this.stageRepository = stageRepository;
+            this._stageRepository = stageRepository;
         }
 
         static StagesContext db = new StagesContext();
@@ -105,7 +105,7 @@ namespace HoGent_Stages.Controllers
                     bedrijfsRepository.Add(bedrijf);
                     bedrijfsRepository.SaveChanges();
                     FormsAuthentication.SetAuthCookie(user.email, false);
-                    return RedirectToAction("Home", "Bedrijf");
+                    return RedirectToAction("CreateMentor", "Bedrijf");
                  }
                  else
                  {
