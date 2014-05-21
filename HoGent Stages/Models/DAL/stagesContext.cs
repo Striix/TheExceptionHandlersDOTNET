@@ -6,7 +6,6 @@ using System.Linq;
 using System.Web;
 using HoGent_Stages.Models.DAL.Mapper;
 using HoGent_Stages.Models.Domain;
-using HoGent_Stages.Models.Domain;
 using MySql.Data.Entity;
 
 namespace HoGent_Stages.Models.DAL

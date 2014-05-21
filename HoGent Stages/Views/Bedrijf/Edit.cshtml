@@ -16,51 +16,51 @@
             <table cellspacing="2" cellpadding="2" border="0">
                 <tr>
                     <td>
-                        @Html.LabelFor(x => x.titel)
+                        @Html.LabelFor(x => x.Titel)
                     </td>
                     <td>
-                        @Html.TextBoxFor(x => x.titel)
+                        @Html.TextBoxFor(x => x.Titel)
                     </td>
                     <td>
-                        @Html.ValidationMessageFor(x => x.titel)
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.LabelFor(x => x.omschrijving)
-                    </td>
-                    <td>
-                        @Html.TextBoxFor(x => x.omschrijving)
-                    </td>
-                    <td>
-                        @Html.ValidationMessageFor(x => x.omschrijving)
+                        @Html.ValidationMessageFor(x => x.Titel)
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        @Html.LabelFor(x => x.aantalStudenten)
+                        @Html.LabelFor(x => x.Omschrijving)
                     </td>
                     <td>
-                        @Html.TextBoxFor(x => x.aantalStudenten)
+                        @Html.TextBoxFor(x => x.Omschrijving)
                     </td>
                     <td>
-                        @Html.ValidationMessageFor(x => x.aantalStudenten)
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.LabelFor(x => x.specialisatie)
-                    </td>
-                    <td>
-                        @Html.TextBoxFor(x => x.specialisatie)
-                    </td>
-                    <td>
-                        @Html.ValidationMessageFor(x => x.specialisatie)
+                        @Html.ValidationMessageFor(x => x.Omschrijving)
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        @Html.LabelFor(x => x.semester)
+                        @Html.LabelFor(x => x.AantalStudenten)
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(x => x.AantalStudenten)
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(x => x.AantalStudenten)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(x => x.Specialisatie)
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(x => x.Specialisatie)
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(x => x.Specialisatie)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(x => x.Semester)
                     </td>
                     <td>
                         <select name="Semester">
@@ -69,12 +69,12 @@
                         </select>
                     </td>
                     <td>
-                        @Html.ValidationMessageFor(x => x.semester)
+                        @Html.ValidationMessageFor(x => x.Semester)
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        @Html.LabelFor(x => x.mentorNaam)
+                        @Html.LabelFor(x => x.MentorNaam)
                     </td>
                     <td>
                         <select name="MentorNaam">
@@ -83,7 +83,7 @@
                         </select>
                     </td>
                     <td>
-                        @Html.ValidationMessageFor(x => x.mentorNaam)
+                        @Html.ValidationMessageFor(x => x.MentorNaam)
                     </td>
                 </tr>
                 <tr>

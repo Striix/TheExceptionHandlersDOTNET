@@ -95,7 +95,7 @@ namespace HoGent_Stages.Models.Domain
 
             public Stage VoegStageToe(Stage stage)
             {
-                if (stages.FirstOrDefault(s => s.titel == stage.titel) != null)
+                if (stages.FirstOrDefault(s => s.Titel == stage.Titel) != null)
                     throw new ArgumentException("Er bestaat al een stage met dezelfde titel");
                 stage.ToegevoegDateTime = DateTime.Now;
                 stages.Add(stage);
@@ -106,20 +106,20 @@ namespace HoGent_Stages.Models.Domain
             {
                 var stageVerwijderen = stages.FirstOrDefault(s => s.Id == stage.Id);
                 if (!stages.Contains(stageVerwijderen))
-                    throw new ArgumentException(string.Format("{0} is geen stage van {1}", stage.titel, this.bedrijfsNaam));
+                    throw new ArgumentException(string.Format("{0} is geen stage van {1}", stage.Titel, this.bedrijfsNaam));
                 stages.Remove(stageVerwijderen);
             }
 
             public void WijzigStage(Stage stage)
             {
                 var wijzig = stages.FirstOrDefault(s => s.Id == stage.Id);
-                wijzig.titel = stage.titel;
-                wijzig.omschrijving = stage.omschrijving;
-                wijzig.specialisatie = stage.specialisatie;
-                wijzig.semester = stage.semester;
-                wijzig.aantalStudenten = stage.aantalStudenten;
+                wijzig.Titel = stage.Titel;
+                wijzig.Omschrijving = stage.Omschrijving;
+                wijzig.Specialisatie = stage.Specialisatie;
+                wijzig.Semester = stage.Semester;
+                wijzig.AantalStudenten = stage.AantalStudenten;
                 wijzig.ToegevoegDateTime = DateTime.Now;
-                wijzig.mentorNaam = stage.mentorNaam;
+                wijzig.MentorNaam = stage.MentorNaam;
             }
 
             public void VoegMentorToe(Mentor mentor)

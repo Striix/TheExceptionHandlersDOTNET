@@ -13,27 +13,27 @@ namespace HoGent_Stages.Models.Domain
 
         [Display(Name="Titel")]
         [Required(ErrorMessage = "{0} is verplicht")]
-        public string titel { get; set; }
+        public string Titel { get; set; }
 
         [Display(Name = "Omschrijving")]
         [DataType(DataType.MultilineText)]
-        public string omschrijving { get; set; }
+        public string Omschrijving { get; set; }
 
         [Display(Name = "Specialisatie")]
         [Required(ErrorMessage = "{0} is verplicht")]
-        public string specialisatie { get; set; }
+        public string Specialisatie { get; set; }
 
         [Display(Name = "Semester")]
         [Required(ErrorMessage = "{0} is verplicht")]
-        public int semester { get; set; }
+        public int Semester { get; set; }
 
         [Display(Name = "Aantal studenten")]
         [Required(ErrorMessage = "{0} is verplicht")]
-        public int aantalStudenten { get; set; }
+        public int AantalStudenten { get; set; }
 
         [Display(Name = "Naam mentor")]
         [Required(ErrorMessage = "{0} is verplicht")]
-        public string mentorNaam { get; set; }
+        public string MentorNaam { get; set; }
 
         [Display(Name="Datum toegevoegd")]
         [Required]
